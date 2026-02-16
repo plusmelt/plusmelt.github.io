@@ -1,0 +1,31 @@
+/* =========================
+   LAYOUT + NAVIGATION
+   ========================= */
+
+header {
+  padding: 2rem 0;
+}
+
+nav a {
+  text-decoration: none;
+  opacity: 0.75;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  opacity: 1;
+}
+
+nav a.active {
+  color: var(--lime);
+  opacity: 1;
+}
+
+.iconbtn {
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: 999px;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
