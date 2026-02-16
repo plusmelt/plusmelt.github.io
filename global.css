@@ -1,0 +1,263 @@
+/* =========================
+   Global Design System
+   ========================= */
+
+/* 1) Variables */
+:root {
+  /* Motion */
+  --cubic-default: cubic-bezier(0.65, 0.05, 0, 1);
+  --duration-default: 0.75s;
+  --anim-default: var(--duration-default) var(--cubic-default);
+
+  /* Scaling (fluid root font-size) */
+  --min-width: 992px;
+  --max-width: 1920px;
+  --design-width: 1728;
+  --design-unit: 16;
+  --scale-factor: 1;
+
+  --fluid-container: clamp(var(--min-width), 100vw, var(--max-width));
+  --fluid-font: calc(
+    var(--fluid-container) / var(--design-width) * var(--design-unit) * var(--scale-factor)
+  );
+
+  /* Colors */
+  --bg: #0b0f0d;
+  --fg: #ffffff;
+  --lime: #d2ff00;
+  --black: #101400;
+
+  /* Surfaces / borders */
+  --surface: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  /* Layout */
+  --container-max: 72rem;
+  --container-pad: 2rem;
+  --section-pad: 6rem;
+
+  /* Radius */
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+}
+
+/* 2) Responsive scaling tweaks */
+@media (max-width: 991px) {
+  :root { --min-width: 768px; --max-width: 991px; --design-unit: 18; }
+}
+@media (max-width: 767px) {
+  :root { --min-width: 480px; --max-width: 767px; --design-unit: 18; }
+}
+@media (max-width: 479px) {
+  :root { --min-width: 320px; --max-width: 479px; --design-unit: 20; }
+}
+
+/* 3) Base reset */
+html {
+  font-size: var(--fluid-font);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--fg);
+
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 4) Selection */
+::selection { background: var(--lime); color: var(--black); }
+::-moz-selection { background: var(--lime); color: var(--black); }
+
+/* 5) Theme switching (set on <body data-theme="light|dark"> ) */
+[data-theme="light"] { --bg: #ffffff; --fg: #101400; --surface: rgba(16, 20, 0, 0.03); --border: rgba(16, 20, 0, 0.12); --border-strong: rgba(16, 20, 0, 0.18); }
+[data-theme="dark"]  { --bg: #0b0f0d; --fg: #ffffff; --surface: rgba(255, 255, 255, 0.03); --border: rgba(255, 255, 255, 0.12); --border-strong: rgba(255, 255, 255, 0.18); }
+
+/* 6) Focus accessibility */
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+/* 7) Typography */
+h1, h2, h3, h4, p { margin: 0; }
+
+h1 {
+  font-size: 3.25rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  max-width: 42rem;
+  opacity: 0.92;
+}
+
+.small {
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+.link:hover { opacity: 0.9; }
+
+/* 8) Layout primitives */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+.section {
+  padding: var(--section-pad) 0;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 767px) {
+  :root { --container-pad: 1.25rem; --section-pad: 4rem; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* 9) Components: Card / Button / Tag */
+.card {
+  padding: 1.6rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition:
+    transform var(--anim-default),
+    opacity var(--anim-default),
+    background-color var(--anim-default),
+    border-color var(--anim-default);
+}
+
+.card:hover {
+  transform: translateY(-0.15rem);
+  border-color: rgba(210, 255, 0, 0.55);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.8rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  background: transparent;
+
+  cursor: pointer;
+  transition:
+    transform var(--anim-default),
+    opacity var(--anim-default),
+    background-color var(--anim-default),
+    border-color var(--anim-default);
+}
+
+.btn:hover {
+  transform: translateY(-0.15rem);
+  border-color: rgba(210, 255, 0, 0.55);
+  background: rgba(210, 255, 0, 0.06);
+}
+
+.btn:active {
+  transform: translateY(0);
+  opacity: 0.95;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: transparent;
+
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* 10) Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
