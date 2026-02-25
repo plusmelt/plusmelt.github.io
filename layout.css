@@ -46,6 +46,40 @@ nav a.active {
   display: block;
 }
 
+/* ===== EDUCATION SECTION ===== */
+
+#education {
+  scroll-margin-top: 100px;
+}
+
+.edu-entry {
+  border-left: 2px solid var(--border);
+  padding-left: 1.25rem;
+  margin-top: 2rem;
+}
+
+.edu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.edu-year {
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+.edu-sub {
+  margin-top: 0.3rem;
+}
+
+.edu-desc {
+  margin-top: 0.6rem;
+  opacity: 0.85;
+}
+
 /* 手机自动上下排列 */
 @media (max-width: 900px) {
   .hero {
