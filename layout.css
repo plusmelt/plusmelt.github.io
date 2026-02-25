@@ -46,41 +46,92 @@ nav a.active {
   display: block;
 }
 
-/* ===== EDUCATION SECTION ===== */
+/* =========================
+   EDUCATION (more designed)
+   ========================= */
 
 #education {
   scroll-margin-top: 100px;
 }
 
-.edu-entry {
-  border-left: 2px solid var(--border);
-  padding-left: 1.25rem;
-  margin-top: 2rem;
+/* timeline wrapper */
+.edu-timeline {
+  position: relative;
+  max-width: 920px;              /* 关键：别让内容撑满整屏，时间就不会飞走 */
 }
 
-.edu-top {
+/* vertical line */
+.edu-timeline::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--border);
+  opacity: 0.8;
+}
+
+/* each entry card */
+.edu-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 1.25rem;
+  padding: 1.1rem 1.1rem 1.1rem 0.2rem;
+  margin-top: 1.4rem;
+  border-radius: 18px;
+}
+
+.edu-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* dot */
+.edu-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  margin-top: 0.35rem;
+  margin-left: 6px;
+}
+
+/* content */
+.edu-content {
+  padding-right: 0.25rem;
+}
+
+.edu-head {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  /* 但因为容器有 max-width，不会离谱 */
   align-items: baseline;
-  flex-wrap: wrap;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .edu-year {
   opacity: 0.7;
   font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.edu-degree {
+  margin-top: 0.35rem;
 }
 
 .edu-sub {
-  margin-top: 0.3rem;
+  margin-top: 0.25rem;
 }
 
-.edu-desc {
-  margin-top: 0.6rem;
+.edu-focus {
+  margin-top: 0.75rem;
   opacity: 0.85;
+  line-height: 1.6;
 }
 
-/* 手机自动上下排列 */
+/* 手机：让 timeline 更紧凑 */
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
@@ -94,5 +145,9 @@ nav a.active {
   .hero-photo img {
     max-width: 220px;
     margin: 0 auto;
+  }
+
+  .edu-timeline {
+    max-width: 100%;
   }
 }
