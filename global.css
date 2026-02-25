@@ -261,3 +261,7 @@ p {
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
 }
+
+html {
+  scroll-behavior: smooth;
+}
