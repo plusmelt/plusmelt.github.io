@@ -7,7 +7,6 @@
 
   <link rel="icon" href="favicon.png">
 
-  <!-- Inter + JetBrains Mono from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,11 +17,10 @@
 
 <body data-theme="dark">
 
-<!-- ================= HEADER ================= -->
+<!-- ============ HEADER ============ -->
 <header>
   <div class="container">
     <div class="brand">Karol Jia / 佳嵘</div>
-
     <nav>
       <a href="#about" class="active">about</a>
       <a href="#experience">work</a>
@@ -36,8 +34,8 @@
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero-section">
+<!-- ============ HERO ============ -->
+<section id="hero">
   <div class="container">
 
     <div class="hero-meta">
@@ -51,29 +49,82 @@
       </div>
     </div>
 
-    <h1 class="hero-name">
-      Karol<br>Jia
-      <span class="cn">佳嵘 · researcher &amp; policy writer</span>
-    </h1>
+    <div class="hero-mid">
+      <div class="hero-prefix">&gt; HI, I'M_</div>
 
-    <div class="hero-bottom">
-      <p class="hero-tagline">
-        Working at the intersection of <em>AI</em>, educational <em>equity</em>,
-        and global education <em>policy</em>.
-      </p>
+      <h1 class="hero-name-block">
+        Karol<br>Jia
+        <span class="cn">佳嵘 · 一个对教育有点想法的人</span>
+      </h1>
+
+      <div class="hero-line">
+        I research <span id="typed" class="typed"></span><span class="caret"></span>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <div class="mono muted">
+        scroll for the long version <span style="margin-left:0.6em;">↓</span>
+      </div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="mailto:rjia9@jh.edu">rjia9@jh.edu</a>
-        <a class="btn" href="#resume">View resume</a>
+        <a class="btn" href="#resume">view resume</a>
       </div>
     </div>
 
   </div>
+
+  <!-- emoji bursts (positioned inside #hero) -->
+  <div id="emoji-stage"></div>
+
+  <!-- the cat cursor (rendered as <img> but hidden until hero is hovered) -->
+  <svg id="cat-cursor" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- ears -->
+    <path d="M6 16 L10 4 L18 12 Z" fill="#0a0a0a" stroke="#d4ff3a" stroke-width="1" stroke-linejoin="round"/>
+    <path d="M38 16 L34 4 L26 12 Z" fill="#0a0a0a" stroke="#d4ff3a" stroke-width="1" stroke-linejoin="round"/>
+    <!-- inner ears -->
+    <path d="M9 8 L11 12 L14 11 Z" fill="#d4ff3a"/>
+    <path d="M35 8 L33 12 L30 11 Z" fill="#d4ff3a"/>
+    <!-- head -->
+    <ellipse cx="22" cy="24" rx="15" ry="13" fill="#0a0a0a" stroke="#d4ff3a" stroke-width="1"/>
+    <!-- bangs / fringe (剑齐刘海) -->
+    <path d="M9 18 Q12 22 14 17 Q15 22 17 18 Q19 23 22 18 Q25 23 27 18 Q29 22 30 17 Q32 22 35 18 L35 22 L9 22 Z"
+          fill="#0a0a0a" stroke="#d4ff3a" stroke-width="0.8" stroke-linejoin="round"/>
+    <!-- eyes (sharp / cool) -->
+    <path d="M15 25 L19 25" stroke="#d4ff3a" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M25 25 L29 25" stroke="#d4ff3a" stroke-width="1.6" stroke-linecap="round"/>
+    <!-- nose -->
+    <path d="M22 28 L20.5 30 L22 30.8 L23.5 30 Z" fill="#d4ff3a"/>
+    <!-- mouth -->
+    <path d="M22 30.8 Q20 32.5 18.5 32 M22 30.8 Q24 32.5 25.5 32"
+          stroke="#d4ff3a" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <!-- whiskers -->
+    <line x1="8" y1="25" x2="3" y2="24" stroke="#d4ff3a" stroke-width="0.6"/>
+    <line x1="8" y1="27" x2="3" y2="28" stroke="#d4ff3a" stroke-width="0.6"/>
+    <line x1="36" y1="25" x2="41" y2="24" stroke="#d4ff3a" stroke-width="0.6"/>
+    <line x1="36" y1="27" x2="41" y2="28" stroke="#d4ff3a" stroke-width="0.6"/>
+  </svg>
 </section>
 
-<!-- ================= ABOUT ================= -->
+<!-- ============ STREAM-OF-CONSCIOUSNESS ============ -->
+<section class="stream-section">
+  <div class="container">
+    <div class="stream-label">// stream of consciousness · /var/karol/notes</div>
+
+    <div class="stream" id="streamBlock">
+      <span class="ln" data-text="What I actually do, said badly:"></span>
+      <span class="ln accent" data-wrap="typed-text" data-text="I study how AI breaks — and sometimes fixes — schools."></span>
+      <span class="ln fade" data-text="More precisely: how generative tools redistribute (or reproduce) academic advantage."></span>
+      <span class="ln fade" data-text="Less precisely: I read papers, talk to teachers, write memos no one asked for."></span>
+      <span class="ln" data-text="Lately I think a lot about who AI in classrooms actually serves."></span>
+      <span class="ln small" data-text="(spoiler: not always the kid who needs it most.)"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
 <section id="about" class="section">
   <div class="container">
-
     <div class="section-head">
       <span class="label">01 — About</span>
       <h2>Who <span class="slash">/</span> what</h2>
@@ -102,11 +153,10 @@
         </p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ================= EXPERIENCE GALLERY (horizontal) ================= -->
+<!-- ============ EXPERIENCE GALLERY ============ -->
 <section id="experience" class="section">
   <div class="container">
     <div class="section-head">
@@ -117,7 +167,6 @@
 
   <div class="container">
     <div class="h-scroll">
-
       <article class="exp-card">
         <div class="tag">
           <span class="num">01</span>
@@ -125,10 +174,7 @@
         </div>
         <h3>Johns Hopkins University</h3>
         <p class="role">M.S.Ed. — Applied Research Track</p>
-        <p>
-          Focus on AI in education, educational equity, and policy analysis.
-          School of Education, Homewood campus.
-        </p>
+        <p>Focus on AI in education, educational equity, and policy analysis. School of Education, Homewood campus.</p>
       </article>
 
       <article class="exp-card">
@@ -138,10 +184,7 @@
         </div>
         <h3>The Ohio State University</h3>
         <p class="role">B.S. Business Administration · Fisher College</p>
-        <p>
-          Marketing major, History minor. Cum laude · Dean's List ×5 ·
-          Allen Family Scholarship.
-        </p>
+        <p>Marketing major, History minor. Cum laude · Dean's List ×5 · Allen Family Scholarship.</p>
       </article>
 
       <article class="exp-card">
@@ -151,10 +194,7 @@
         </div>
         <h3>AI &amp; Equity in Education</h3>
         <p class="role">Independent &amp; coursework projects</p>
-        <p>
-          Examining how generative AI tools redistribute — or reproduce —
-          academic advantage in K-12 and higher education contexts.
-        </p>
+        <p>Examining how generative AI tools redistribute — or reproduce — academic advantage in K-12 and higher education contexts.</p>
       </article>
 
       <article class="exp-card">
@@ -164,19 +204,13 @@
         </div>
         <h3>Policy &amp; Commentary</h3>
         <p class="role">Selected publications</p>
-        <p>
-          Short-form pieces on education policy, technology adoption, and
-          cross-system comparisons. See the
-          <a href="publications.html" style="border-bottom:1px solid currentColor;">writing</a>
-          page.
-        </p>
+        <p>Short-form pieces on education policy, technology adoption, and cross-system comparisons. See the <a href="publications.html" style="border-bottom:1px solid currentColor;">writing</a> page.</p>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- ================= RESUME (HTML) ================= -->
+<!-- ============ RESUME (HTML) ============ -->
 <section id="resume" class="section">
   <div class="container">
 
@@ -185,7 +219,6 @@
       <h2>The <span class="slash">/</span> long form</h2>
     </div>
 
-    <!-- EDUCATION -->
     <div class="resume-block">
       <div class="resume-block-title">Education</div>
 
@@ -194,10 +227,7 @@
         <div class="what">
           <h3>Johns Hopkins University</h3>
           <div class="where">M.S.Ed., Applied Research Track · School of Education</div>
-          <p>
-            Coursework and applied research focused on AI in education,
-            educational equity, and policy analysis.
-          </p>
+          <p>Coursework and applied research focused on AI in education, educational equity, and policy analysis.</p>
         </div>
       </div>
 
@@ -215,7 +245,6 @@
       </div>
     </div>
 
-    <!-- RESEARCH / PROJECTS -->
     <div class="resume-block">
       <div class="resume-block-title">Research &amp; Projects</div>
 
@@ -224,42 +253,27 @@
         <div class="what">
           <h3>AI Adoption &amp; Equity in K-12</h3>
           <div class="where">Applied research · JHU School of Education</div>
-          <p>
-            Investigating how access to generative AI tools varies across
-            socioeconomic and geographic lines, and what design and policy
-            interventions can narrow rather than widen those gaps.
-          </p>
+          <p>Investigating how access to generative AI tools varies across socioeconomic and geographic lines, and what design and policy interventions can narrow rather than widen those gaps.</p>
         </div>
       </div>
-
-      <!-- 你可以继续往这里加项目 -->
     </div>
 
-    <!-- SKILLS -->
     <div class="resume-block">
       <div class="resume-block-title">Skills &amp; Tools</div>
-
       <div class="resume-item">
         <div class="when">Methods</div>
-        <div class="what">
-          <p>Qualitative research, policy analysis, comparative education, survey design.</p>
-        </div>
+        <div class="what"><p>Qualitative research, policy analysis, comparative education, survey design.</p></div>
       </div>
       <div class="resume-item">
         <div class="when">Tools</div>
-        <div class="what">
-          <p>R, Stata, Excel, Tableau, Qualtrics, NVivo, LaTeX.</p>
-        </div>
+        <div class="what"><p>R, Stata, Excel, Tableau, Qualtrics, NVivo, LaTeX.</p></div>
       </div>
       <div class="resume-item">
         <div class="when">Languages</div>
-        <div class="what">
-          <p>English (fluent) · Mandarin Chinese (native).</p>
-        </div>
+        <div class="what"><p>English (fluent) · Mandarin Chinese (native).</p></div>
       </div>
     </div>
 
-    <!-- CTA strip -->
     <div class="cta-strip">
       <p>Prefer the PDF? Grab the full one-pager.</p>
       <div class="row">
@@ -271,10 +285,10 @@
   </div>
 </section>
 
-<!-- ================= OUTRO ================= -->
+<!-- ============ OUTRO ============ -->
 <section class="outro">
   <div class="container">
-    <p class="mono muted" style="margin-bottom:1.5rem;">— Let's talk</p>
+    <p class="mono muted" style="margin-bottom:1.5rem;">— let's talk</p>
     <h2 class="outro-text">
       Build the <span class="accent">future</span><br>
       of equitable<br>
@@ -287,13 +301,17 @@
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer>
   <div class="container row" style="justify-content:space-between;">
     <p>© <span id="year"></span> Karol Jia · 佳嵘</p>
-    <p class="mono">Built with care · v2</p>
+    <p class="mono">built with care · v3</p>
   </div>
 </footer>
+
+<!-- the toggle that turns cat cursor on/off -->
+<button class="cat-toggle" id="catToggle" aria-label="Toggle cat cursor">
+  <span id="catToggleLabel">cat: on 🐈</span>
+</button>
 
 <script src="app.js"></script>
 </body>
