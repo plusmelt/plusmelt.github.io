@@ -84,6 +84,11 @@ header nav a.active::after {
   grid-template-columns: auto auto;
   column-gap: 1rem;
   justify-content: end;
+  white-space: nowrap;
+}
+
+.time-row span {
+  white-space: nowrap;
 }
 
 .time-row span:first-child {
@@ -126,21 +131,18 @@ header nav a.active::after {
   align-items: center;
   white-space: nowrap;
   flex-wrap: nowrap;
-  width: auto;
+
+  min-width: 32ch;
 }
 
 .hero-line .typed {
   background: var(--hl);
   color: var(--hl-ink);
   padding: 0 0.2em;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   margin-left: 0.3em;
-  width: 14ch;
-  min-width: 14ch;
-  max-width: 14ch;
+
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .caret {
@@ -193,7 +195,7 @@ header nav a.active::after {
   flex-wrap: wrap;
 }
 
-/* cat cursor */
+/* ---------------- CAT CURSOR ---------------- */
 #cat-cursor {
   position: fixed;
   width: 44px;
@@ -339,7 +341,8 @@ header nav a.active::after {
   gap: 1rem;
 }
 
-.section-head .label {
+.section-head .label,
+.notes-preview-head .label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
@@ -347,7 +350,8 @@ header nav a.active::after {
   color: var(--fg-muted);
 }
 
-.section-head h2 .slash {
+.section-head h2 .slash,
+.notes-preview-head h2 .slash {
   color: var(--hl);
 }
 
@@ -446,13 +450,6 @@ header nav a.active::after {
   margin-top: 1.5rem;
 }
 
-@media (max-width: 820px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
 /* ---------------- RESUME ---------------- */
 .resume-block + .resume-block {
   margin-top: 4rem;
@@ -516,13 +513,6 @@ header nav a.active::after {
   margin-bottom: 0.3rem;
 }
 
-@media (max-width: 720px) {
-  .resume-item {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
-  }
-}
-
 .cta-strip {
   display: flex;
   justify-content: space-between;
@@ -537,27 +527,6 @@ header nav a.active::after {
 .cta-strip p {
   font-size: 1rem;
   color: var(--fg-muted);
-}
-
-/* ---------------- OUTRO ---------------- */
-.outro {
-  padding: 6rem 0;
-  border-top: 1px solid var(--line);
-  overflow: hidden;
-}
-
-.outro-text {
-  font-size: clamp(2.5rem, 9vw, 8rem);
-  font-weight: 900;
-  letter-spacing: -0.05em;
-  line-height: 0.95;
-  text-transform: uppercase;
-}
-
-.outro-text .accent {
-  background: var(--hl);
-  color: var(--hl-ink);
-  padding: 0 0.15em;
 }
 
 /* ---------------- FIELD NOTES PREVIEW ON HOME ---------------- */
@@ -854,6 +823,27 @@ header nav a.active::after {
   cursor: not-allowed;
 }
 
+/* ---------------- OUTRO ---------------- */
+.outro {
+  padding: 6rem 0;
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.outro-text {
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.outro-text .accent {
+  background: var(--hl);
+  color: var(--hl-ink);
+  padding: 0 0.15em;
+}
+
 /* ---------------- MOBILE ---------------- */
 @media (max-width: 820px) {
   .about-grid {
@@ -883,6 +873,13 @@ header nav a.active::after {
 
   .field-notes-hero {
     padding-top: 6rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .resume-item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
   }
 }
 
@@ -920,10 +917,8 @@ header nav a.active::after {
     font-size: clamp(1.25rem, 6vw, 2rem);
   }
 
-  .hero-line .typed {
-    width: 12ch;
-    min-width: 12ch;
-    max-width: 12ch;
+  .hero-line-inner {
+    min-width: 26ch;
   }
 
   .time-row {
