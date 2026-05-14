@@ -25,7 +25,7 @@
       <a href="#about" class="active">about</a>
       <a href="#experience">work</a>
       <a href="#resume">resume</a>
-      <a href="#notes">notes</a>
+      <a href="notes.html">notes</a>
       <a href="publications.html">writing</a>
       <a href="https://sites.google.com/view/karoljiaportfolio/profile"
          target="_blank" rel="noopener noreferrer">cv ↗</a>
@@ -280,20 +280,30 @@
   </div>
 </section>
 
-<!-- ============ NOTES ============ -->
-<section id="notes" class="section notes-section">
+<!-- ============ FIELD NOTES PREVIEW ============ -->
+<section id="notes-preview" class="section notes-preview-section">
   <div class="container">
-    <div class="section-head">
-      <span class="label">04 — Notes</span>
-      <h2>Field <span class="slash">/</span> notes</h2>
+    <div class="notes-preview-head">
+      <div>
+        <span class="label">04 — Notes</span>
+        <h2>Field <span class="slash">/</span> Notes</h2>
+      </div>
+
+      <div class="notes-preview-meta" id="latestNoteTime">
+        last update loading...
+      </div>
     </div>
 
-    <p class="notes-intro">
-      Short notes, fragments, and ideas synced from Discord.
+    <p class="notes-preview-intro">
+      Small fragments from reading, research, daily life, and the unfinished parts of becoming.
     </p>
 
-    <div id="notes-list" class="notes-list">
-      <p class="muted">Loading notes...</p>
+    <div id="latest-note-card" class="latest-note-card">
+      <p class="muted">Loading latest note...</p>
+    </div>
+
+    <div class="notes-preview-action">
+      <a class="btn" href="notes.html">more notes</a>
     </div>
   </div>
 </section>
@@ -327,10 +337,11 @@
 </button>
 
 <script>
-async function loadNotes() {
-  const notesList = document.getElementById("notes-list");
+async function loadLatestNotePreview() {
+  const card = document.getElementById("latest-note-card");
+  const time = document.getElementById("latestNoteTime");
 
-  if (!notesList) {
+  if (!card || !time) {
     return;
   }
 
@@ -340,48 +351,65 @@ async function loadNotes() {
     });
 
     const data = await response.json();
-    const notes = data.notes || [];
+    const notes = Array.isArray(data.notes) ? data.notes : [];
 
-    if (notes.length === 0) {
-      notesList.innerHTML = '<p class="muted">No notes yet.</p>';
+    if (!notes.length) {
+      card.innerHTML = '<p class="muted">No notes yet.</p>';
+      time.textContent = "last update unavailable";
       return;
     }
 
-    notesList.innerHTML = notes.map(note => {
-      const date = new Date(note.timestamp).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric"
-      });
+    const latest = notes[0];
+    const latestDate = new Date(latest.timestamp);
 
-      const tags = note.tags && note.tags.length
-        ? `<div class="note-tags">${note.tags.map(tag => `<span>#${escapeHtml(tag)}</span>`).join("")}</div>`
-        : "";
+    time.textContent = `last update ${relativePreviewTime(latestDate)}`;
 
-      const images = note.images && note.images.length
-        ? `<div class="note-media">${note.images.map(src => `<img src="${escapeAttribute(src)}" alt="Discord note image">`).join("")}</div>`
-        : "";
+    const tags = latest.tags && latest.tags.length
+      ? `<div class="note-tags">${latest.tags.map(tag => `<span>#${escapePreviewHtml(tag)}</span>`).join("")}</div>`
+      : "";
 
-      const videos = note.videos && note.videos.length
-        ? `<div class="note-media">${note.videos.map(src => `<video src="${escapeAttribute(src)}" controls></video>`).join("")}</div>`
-        : "";
-
-      return `
-        <article class="note-card">
-          <div class="note-date">${date}</div>
-          <p>${escapeHtml(note.content)}</p>
-          ${images}
-          ${videos}
-          ${tags}
-        </article>
-      `;
-    }).join("");
+    card.innerHTML = `
+      <article>
+        <p>${escapePreviewHtml(latest.content)}</p>
+        ${tags}
+      </article>
+    `;
   } catch (error) {
-    notesList.innerHTML = '<p class="muted">Notes could not be loaded.</p>';
+    card.innerHTML = '<p class="muted">Latest note could not be loaded.</p>';
+    time.textContent = "last update unavailable";
   }
 }
 
-function escapeHtml(text) {
+function relativePreviewTime(date) {
+  const seconds = Math.max(1, Math.floor((Date.now() - date.getTime()) / 1000));
+
+  if (seconds < 60) {
+    return `${seconds}s ago`;
+  }
+
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) {
+    return `${minutes}m ago`;
+  }
+
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) {
+    return `${hours}h ago`;
+  }
+
+  const days = Math.floor(hours / 24);
+  if (days < 30) {
+    return `${days}d ago`;
+  }
+
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+}
+
+function escapePreviewHtml(text) {
   return String(text || "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -390,15 +418,7 @@ function escapeHtml(text) {
     .replaceAll("'", "&#039;");
 }
 
-function escapeAttribute(text) {
-  return String(text || "")
-    .replaceAll("&", "&amp;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;");
-}
-
-loadNotes();
+loadLatestNotePreview();
 </script>
 
 <script src="app.js"></script>
