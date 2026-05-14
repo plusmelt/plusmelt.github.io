@@ -1,193 +1,315 @@
-/* =========================
-   LAYOUT + NAVIGATION
-   ========================= */
+/* ============================================================
+   LAYOUT.CSS — page-specific modules
+   ============================================================ */
 
+/* ---------------- HEADER ---------------- */
 header {
-  padding: 2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
 }
-
-nav a {
-  text-decoration: none;
-  opacity: 0.75;
-  transition: 0.2s;
-}
-
-nav a:hover {
-  opacity: 1;
-}
-
-nav a.active {
-  color: var(--lime);
-  opacity: 1;
-}
-
-.iconbtn {
-  border: 1px solid var(--border);
-  background: transparent;
-  border-radius: 999px;
-  width: 2rem;
-  height: 2rem;
-  cursor: pointer;
-}
-
-/* ===== HERO LAYOUT ===== */
-
-.hero {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+header .container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 4rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
 }
-
-.hero-photo img {
-  width: 100%;
-  max-width: 240px;
-  border-radius: 16px;
-  display: block;
+header .brand {
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
 }
-
-/* =========================
-   EDUCATION
-   ========================= */
-
-#education {
-  scroll-margin-top: 100px;
+header nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
-
-.edu-timeline {
+header nav a {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
   position: relative;
-  max-width: 920px;
 }
-
-.edu-timeline::before {
-  content: "";
+header nav a.active::after {
+  content: '';
   position: absolute;
-  left: 12px;
-  top: 6px;
-  bottom: 6px;
-  width: 2px;
-  background: var(--border);
-  opacity: 0.8;
+  left: 0; right: 0; bottom: -6px;
+  height: 2px;
+  background: var(--hl);
 }
 
-.edu-card {
-  position: relative;
+/* ---------------- HERO ---------------- */
+.hero-section {
+  padding: 4rem 0 2rem;
+  border-top: none;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 3rem;
+}
+.hero-meta .right { text-align: right; line-height: 1.7; }
+
+.hero-name {
+  font-size: clamp(3.5rem, 14vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+.hero-name .cn {
+  display: block;
+  font-size: 0.32em;
+  font-weight: 500;
+  color: var(--fg-muted);
+  letter-spacing: 0.02em;
+  margin-top: 0.4rem;
+  text-transform: none;
+}
+
+.hero-bottom {
   display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 1.25rem;
-  padding: 1.1rem 1.1rem 1.1rem 0.2rem;
-  margin-top: 1.4rem;
-  border-radius: 18px;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: end;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.hero-tagline {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  line-height: 1.35;
+  max-width: 30ch;
+  font-weight: 500;
+}
+.hero-tagline em {
+  font-style: normal;
+  background: var(--hl);
+  color: var(--hl-ink);
+  padding: 0 0.25em;
+}
+.hero-cta {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-.edu-card:hover {
-  background: rgba(255, 255, 255, 0.03);
+@media (max-width: 720px) {
+  .hero-bottom { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero-cta { justify-content: flex-start; }
 }
 
-.edu-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  border: 2px solid var(--border);
-  background: rgba(255, 255, 255, 0.02);
-  margin-top: 0.35rem;
-  margin-left: 6px;
-}
-
-.edu-content {
-  padding-right: 0.25rem;
-}
-
-.edu-head {
+/* ---------------- SECTION HEADERS ---------------- */
+.section-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 1rem;
+  margin-bottom: 3rem;
   flex-wrap: wrap;
+  gap: 1rem;
 }
-
-.edu-year {
-  opacity: 0.7;
-  font-size: 0.95rem;
-  white-space: nowrap;
+.section-head .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
 }
+.section-head h2 .slash { color: var(--hl); }
 
-.edu-degree {
-  margin-top: 0.35rem;
+/* ---------------- HORIZONTAL GALLERY ---------------- */
+.h-scroll {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 2rem 1.5rem;
+  margin: 0 -2rem;
+  scroll-padding: 2rem;
 }
+.h-scroll > * { scroll-snap-align: start; flex-shrink: 0; }
 
-.edu-sub {
-  margin-top: 0.25rem;
+.exp-card {
+  width: clamp(280px, 32vw, 420px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-
-.edu-focus {
-  margin-top: 0.75rem;
-  opacity: 0.85;
-  line-height: 1.6;
-}
-
-/* =========================
-   RESUME
-   ========================= */
-
-#resume {
-  scroll-margin-top: 100px;
-}
-
-.resume-header {
+.exp-card .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
+}
+.exp-card .tag .num {
+  color: var(--fg);
+  font-weight: 600;
+}
+.exp-card h3 {
+  font-size: 1.6rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.exp-card .role {
+  font-size: 0.95rem;
+  color: var(--fg-muted);
+}
+.exp-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--fg);
 }
 
-.resume-note {
-  margin-top: 0.4rem;
-  opacity: 0.75;
+/* ---------------- ABOUT (intro paragraph) ---------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
 }
-
-.resume-actions {
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.resume-frame-wrap {
-  margin-top: 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: 20px;
+.about-photo {
+  position: relative;
+  aspect-ratio: 4/5;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-elev);
 }
-
-.resume-frame {
+.about-photo img {
   width: 100%;
-  height: 900px;
-  border: 0;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  filter: grayscale(0.15);
+  transition: filter 0.4s ease;
+}
+.about-photo:hover img { filter: grayscale(0); }
+.about-text {
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  line-height: 1.35;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.about-text p + p { margin-top: 1.5rem; }
+
+@media (max-width: 820px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 
-/* 手机自动上下排列 */
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
+/* ---------------- RESUME (HTML version) ---------------- */
+.resume-block + .resume-block { margin-top: 4rem; }
 
-  .hero-photo {
-    order: -1;
-    text-align: center;
-  }
+.resume-block-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
+}
 
-  .hero-photo img {
-    max-width: 220px;
-    margin: 0 auto;
-  }
+.resume-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.resume-item:last-child { border-bottom: none; }
+.resume-item .when {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}
+.resume-item .what h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
+}
+.resume-item .what .where {
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.7rem;
+}
+.resume-item .what p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.resume-item .what ul {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.resume-item .what ul li { margin-bottom: 0.3rem; }
 
-  .edu-timeline {
-    max-width: 100%;
-  }
+@media (max-width: 720px) {
+  .resume-item { grid-template-columns: 1fr; gap: 0.4rem; }
+}
 
-  .resume-frame {
-    height: 600px;
-  }
+/* ---------------- CTA strip (bottom of resume) ---------------- */
+.cta-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cta-strip p {
+  font-size: 1rem;
+  color: var(--fg-muted);
+}
+
+/* ---------------- BIG MARQUEE-STYLE outro ---------------- */
+.outro {
+  padding: 6rem 0;
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+.outro-text {
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.outro-text .accent {
+  background: var(--hl);
+  color: var(--hl-ink);
+  padding: 0 0.15em;
+}
+
+/* ---------------- Mobile nav adjust ---------------- */
+@media (max-width: 640px) {
+  header .container { padding: 0.8rem 1.2rem; }
+  header nav { gap: 1rem; }
+  header nav a { font-size: 0.8rem; }
+  .container { padding: 0 1.2rem; }
+  .section { padding: 4rem 0; }
+  .h-scroll { padding: 0 1.2rem 1.5rem; margin: 0 -1.2rem; }
 }
