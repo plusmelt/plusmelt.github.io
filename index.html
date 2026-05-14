@@ -3,10 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Karol Jia</title>
+  <title>Karol Jia — AI · Equity · Education</title>
 
-  <!-- ⭐ 新增 favicon -->
   <link rel="icon" href="favicon.png">
+
+  <!-- Inter + JetBrains Mono from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="global.css">
   <link rel="stylesheet" href="layout.css">
@@ -14,140 +18,280 @@
 
 <body data-theme="dark">
 
+<!-- ================= HEADER ================= -->
 <header>
-  <div class="container row" style="justify-content: space-between;">
-    <div>Karol Jia</div>
+  <div class="container">
+    <div class="brand">Karol Jia / 佳嵘</div>
 
-    <nav class="row">
-      <a href="index.html" class="active">about</a>
-      <a href="#education">education</a>
+    <nav>
+      <a href="#about" class="active">about</a>
+      <a href="#experience">work</a>
       <a href="#resume">resume</a>
-      <a href="publications.html">publications</a>
-
-      <!-- CV external link -->
+      <a href="publications.html">writing</a>
       <a href="https://sites.google.com/view/karoljiaportfolio/profile"
-         target="_blank"
-         rel="noopener noreferrer">
-        cv
-      </a>
-
+         target="_blank" rel="noopener noreferrer">cv ↗</a>
       <button id="themeToggle" class="iconbtn" type="button"
               aria-label="Toggle theme" title="Toggle theme">☾</button>
     </nav>
   </div>
 </header>
 
-<section class="section">
-  <div class="container hero">
-    <!-- 左边照片 -->
-    <div class="hero-photo">
-      <img src="assets/626A6805.JPG" alt="Karol Jia">
-    </div>
+<!-- ================= HERO ================= -->
+<section class="hero-section">
+  <div class="container">
 
-    <!-- 右边文字 -->
-    <div class="hero-text stack">
-      <h1>Karol Jia 佳嵘</h1>
-
-      <p>
-        AI + Equity + Education • Global Policy<br>
-        School of Education, Johns Hopkins University
-      </p>
-
-      <div class="row">
-        <a class="btn" href="mailto:rjia9@jh.edu">rjia9@jh.edu</a>
-        <a class="btn" href="mailto:karoljia@proton.me">karoljia@proton.me</a>
+    <div class="hero-meta">
+      <div>
+        <div>M.S.Ed. · Johns Hopkins</div>
+        <div>School of Education / 2025–26</div>
+      </div>
+      <div class="right">
+        <div>Catonsville, MD</div>
+        <div id="liveTime">—</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ================= EDUCATION ================= -->
-<section id="education" class="section">
-  <div class="container stack">
-    <h2>Education</h2>
+    <h1 class="hero-name">
+      Karol<br>Jia
+      <span class="cn">佳嵘 · researcher &amp; policy writer</span>
+    </h1>
 
-    <div class="edu-timeline">
-
-      <!-- JHU -->
-      <article class="edu-card">
-        <div class="edu-dot" aria-hidden="true"></div>
-
-        <div class="edu-content">
-          <div class="edu-head">
-            <div class="edu-school">
-              <strong>Johns Hopkins University</strong>
-            </div>
-            <div class="edu-year">Aug 2025 to Aug 2026</div>
-          </div>
-
-          <div class="edu-degree">M.S.Ed., Applied Research Track</div>
-
-          <p class="edu-focus">
-            Focus: AI in Education, Educational Equity, Policy Analysis.
-          </p>
-        </div>
-      </article>
-
-      <!-- OSU -->
-      <article class="edu-card">
-        <div class="edu-dot" aria-hidden="true"></div>
-
-        <div class="edu-content">
-          <div class="edu-head">
-            <div class="edu-school">
-              <strong>The Ohio State University</strong>
-            </div>
-            <div class="edu-year">Aug 2021 to Dec 2024</div>
-          </div>
-
-          <div class="edu-degree">B.S. in Business Administration</div>
-          <div class="edu-sub muted">Fisher College of Business</div>
-
-          <p class="edu-focus">
-            Marketing Major • History Minor<br>
-            Honors: Dean’s List (5×), Cumma Laude, Allen Family Scholarship ($700)
-          </p>
-        </div>
-      </article>
-
+    <div class="hero-bottom">
+      <p class="hero-tagline">
+        Working at the intersection of <em>AI</em>, educational <em>equity</em>,
+        and global education <em>policy</em>.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="mailto:rjia9@jh.edu">rjia9@jh.edu</a>
+        <a class="btn" href="#resume">View resume</a>
+      </div>
     </div>
+
   </div>
 </section>
 
-<!-- ================= RESUME ================= -->
-<section id="resume" class="section">
-  <div class="container stack">
-    <div class="resume-header">
-      <div>
-        <h2>Resume</h2>
-        <p class="resume-note">
-          A current PDF version of my resume is available below.
+<!-- ================= ABOUT ================= -->
+<section id="about" class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="label">01 — About</span>
+      <h2>Who <span class="slash">/</span> what</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="assets/626A6805.JPG" alt="Karol Jia portrait">
+      </div>
+
+      <div class="about-text">
+        <p>
+          I'm a graduate researcher at <strong>Johns Hopkins School of Education</strong>,
+          studying how AI is reshaping access, assessment, and equity in classrooms
+          across borders.
+        </p>
+        <p>
+          My background bridges <span class="hl">business</span>, <span class="hl">history</span>,
+          and <span class="hl">education policy</span> — I'm interested in what
+          translates across systems, and what doesn't.
+        </p>
+        <p class="muted" style="font-size:1rem; line-height:1.6;">
+          Currently based in the DC–Baltimore corridor. Previously at The Ohio State
+          University (Fisher College of Business), graduated cum laude with a B.S. in
+          Business Administration, Marketing major and History minor.
         </p>
       </div>
-
-      <div class="resume-actions row">
-        <a class="btn" href="assets/Karol_Jia_Resume.pdf" target="_blank" rel="noopener noreferrer">
-          Open PDF
-        </a>
-        <a class="btn" href="assets/Karol_Jia_Resume.pdf" download>
-          Download
-        </a>
-      </div>
     </div>
 
-    <div class="resume-frame-wrap">
-      <iframe
-        class="resume-frame"
-        src="assets/Karol_Jia_Resume.pdf"
-        title="Karol Jia Resume">
-      </iframe>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE GALLERY (horizontal) ================= -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">02 — Trajectory</span>
+      <h2>Work <span class="slash">/</span> Study</h2>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="h-scroll">
+
+      <article class="exp-card">
+        <div class="tag">
+          <span class="num">01</span>
+          <span>Baltimore, MD · 2025–26</span>
+        </div>
+        <h3>Johns Hopkins University</h3>
+        <p class="role">M.S.Ed. — Applied Research Track</p>
+        <p>
+          Focus on AI in education, educational equity, and policy analysis.
+          School of Education, Homewood campus.
+        </p>
+      </article>
+
+      <article class="exp-card">
+        <div class="tag">
+          <span class="num">02</span>
+          <span>Columbus, OH · 2021–24</span>
+        </div>
+        <h3>The Ohio State University</h3>
+        <p class="role">B.S. Business Administration · Fisher College</p>
+        <p>
+          Marketing major, History minor. Cum laude · Dean's List ×5 ·
+          Allen Family Scholarship.
+        </p>
+      </article>
+
+      <article class="exp-card">
+        <div class="tag">
+          <span class="num">03</span>
+          <span>Research · ongoing</span>
+        </div>
+        <h3>AI &amp; Equity in Education</h3>
+        <p class="role">Independent &amp; coursework projects</p>
+        <p>
+          Examining how generative AI tools redistribute — or reproduce —
+          academic advantage in K-12 and higher education contexts.
+        </p>
+      </article>
+
+      <article class="exp-card">
+        <div class="tag">
+          <span class="num">04</span>
+          <span>Writing · 2024–</span>
+        </div>
+        <h3>Policy &amp; Commentary</h3>
+        <p class="role">Selected publications</p>
+        <p>
+          Short-form pieces on education policy, technology adoption, and
+          cross-system comparisons. See the
+          <a href="publications.html" style="border-bottom:1px solid currentColor;">writing</a>
+          page.
+        </p>
+      </article>
+
     </div>
   </div>
 </section>
 
-<footer class="section">
+<!-- ================= RESUME (HTML) ================= -->
+<section id="resume" class="section">
   <div class="container">
-    <p>© <span id="year"></span> Karol Jia</p>
+
+    <div class="section-head">
+      <span class="label">03 — Résumé</span>
+      <h2>The <span class="slash">/</span> long form</h2>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="resume-block">
+      <div class="resume-block-title">Education</div>
+
+      <div class="resume-item">
+        <div class="when">Aug 2025 — Aug 2026</div>
+        <div class="what">
+          <h3>Johns Hopkins University</h3>
+          <div class="where">M.S.Ed., Applied Research Track · School of Education</div>
+          <p>
+            Coursework and applied research focused on AI in education,
+            educational equity, and policy analysis.
+          </p>
+        </div>
+      </div>
+
+      <div class="resume-item">
+        <div class="when">Aug 2021 — Dec 2024</div>
+        <div class="what">
+          <h3>The Ohio State University</h3>
+          <div class="where">B.S. Business Administration · Fisher College of Business</div>
+          <p>Marketing major · History minor · graduated cum laude.</p>
+          <ul>
+            <li>Dean's List (5×)</li>
+            <li>Allen Family Scholarship ($700)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESEARCH / PROJECTS -->
+    <div class="resume-block">
+      <div class="resume-block-title">Research &amp; Projects</div>
+
+      <div class="resume-item">
+        <div class="when">2025 — present</div>
+        <div class="what">
+          <h3>AI Adoption &amp; Equity in K-12</h3>
+          <div class="where">Applied research · JHU School of Education</div>
+          <p>
+            Investigating how access to generative AI tools varies across
+            socioeconomic and geographic lines, and what design and policy
+            interventions can narrow rather than widen those gaps.
+          </p>
+        </div>
+      </div>
+
+      <!-- 你可以继续往这里加项目 -->
+    </div>
+
+    <!-- SKILLS -->
+    <div class="resume-block">
+      <div class="resume-block-title">Skills &amp; Tools</div>
+
+      <div class="resume-item">
+        <div class="when">Methods</div>
+        <div class="what">
+          <p>Qualitative research, policy analysis, comparative education, survey design.</p>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="when">Tools</div>
+        <div class="what">
+          <p>R, Stata, Excel, Tableau, Qualtrics, NVivo, LaTeX.</p>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="when">Languages</div>
+        <div class="what">
+          <p>English (fluent) · Mandarin Chinese (native).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA strip -->
+    <div class="cta-strip">
+      <p>Prefer the PDF? Grab the full one-pager.</p>
+      <div class="row">
+        <a class="btn" href="assets/Karol_Jia_Resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a>
+        <a class="btn btn-primary" href="assets/Karol_Jia_Resume.pdf" download>Download</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= OUTRO ================= -->
+<section class="outro">
+  <div class="container">
+    <p class="mono muted" style="margin-bottom:1.5rem;">— Let's talk</p>
+    <h2 class="outro-text">
+      Build the <span class="accent">future</span><br>
+      of equitable<br>
+      education.
+    </h2>
+    <div class="row" style="margin-top:3rem;">
+      <a class="btn btn-primary" href="mailto:rjia9@jh.edu">rjia9@jh.edu</a>
+      <a class="btn" href="mailto:karoljia@proton.me">karoljia@proton.me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container row" style="justify-content:space-between;">
+    <p>© <span id="year"></span> Karol Jia · 佳嵘</p>
+    <p class="mono">Built with care · v2</p>
   </div>
 </footer>
 
