@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sidenotes — Karol Jia</title>
+  <title>Field Notes — Karol Jia</title>
 
   <link rel="icon" href="favicon.png">
 
@@ -36,23 +36,25 @@
 
 <main>
 
-  <section class="section sidenotes-hero">
+  <!-- ============ NOTES HERO ============ -->
+  <section class="section field-notes-hero">
     <div class="container">
-      <div class="section-head">
-        <span class="label">Sidenotes</span>
-        <h1>The rest <span class="slash">/</span> of me</h1>
+      <div class="field-notes-topline">
+        <span class="label">04 — Notes</span>
+        <span class="field-notes-update" id="lastUpdate">last update loading...</span>
       </div>
 
-      <p class="sidenotes-lead">
-        Fragments outside the formal résumé: small records of reading, growing, noticing, and thinking aloud.
+      <h1 class="field-notes-title">
+        From <span class="slash">/</span> the Field
+      </h1>
+
+      <p class="field-notes-lead">
+        Small fragments from reading, research, daily life, and the unfinished parts of becoming.
       </p>
-
-      <div class="sidenotes-meta" id="lastUpdate">
-        last update loading...
-      </div>
     </div>
   </section>
 
+  <!-- ============ PERSONAL STORY ============ -->
   <section class="section story-section">
     <div class="container">
       <div class="section-head compact">
@@ -88,6 +90,7 @@
     </div>
   </section>
 
+  <!-- ============ LIVE NOTES ============ -->
   <section class="section notes-feed-section">
     <div class="container">
       <div class="section-head compact">
@@ -97,11 +100,11 @@
 
       <div class="tag-filter" id="tagFilter">
         <button class="tag-filter-btn active" data-tag="all">all</button>
-        <button class="tag-filter-btn" data-tag="life">#life</button>
         <button class="tag-filter-btn" data-tag="research">#research</button>
+        <button class="tag-filter-btn" data-tag="life">#life</button>
+        <button class="tag-filter-btn" data-tag="travel">#travel</button>
         <button class="tag-filter-btn" data-tag="reading">#reading</button>
         <button class="tag-filter-btn" data-tag="quote">#quote</button>
-        <button class="tag-filter-btn" data-tag="travel">#travel</button>
       </div>
 
       <div id="notes-list" class="notes-list">
@@ -109,9 +112,9 @@
       </div>
 
       <div class="notes-pagination">
-        <button class="btn" id="prevNotes" type="button">previous</button>
+        <button class="btn" id="prevNotes" type="button">newer notes</button>
         <span class="mono muted" id="pageInfo">page 1</span>
-        <button class="btn" id="nextNotes" type="button">next</button>
+        <button class="btn" id="nextNotes" type="button">older notes</button>
       </div>
     </div>
   </section>
@@ -121,7 +124,7 @@
 <footer>
   <div class="container row" style="justify-content:space-between;">
     <p>© <span id="year"></span> Karol Jia · 佳嵘</p>
-    <p class="mono">sidenotes · no single-note URLs</p>
+    <p class="mono">field notes · no single-note URLs</p>
   </div>
 </footer>
 
@@ -147,6 +150,7 @@ async function loadNotesPage() {
     state.filteredNotes = state.notes;
 
     updateLastUpdate();
+    updateTagCounts();
     renderNotes();
   } catch (error) {
     notesList.innerHTML = '<p class="muted">Notes could not be loaded.</p>';
@@ -164,6 +168,25 @@ function updateLastUpdate() {
 
   const latest = new Date(state.notes[0].timestamp);
   target.textContent = `last update ${relativeTime(latest)}`;
+}
+
+function updateTagCounts() {
+  const buttons = document.querySelectorAll(".tag-filter-btn");
+
+  buttons.forEach(button => {
+    const tag = button.dataset.tag;
+
+    if (tag === "all") {
+      button.textContent = `all · ${state.notes.length}`;
+      return;
+    }
+
+    const count = state.notes.filter(note => {
+      return Array.isArray(note.tags) && note.tags.includes(tag);
+    }).length;
+
+    button.textContent = `#${tag} · ${count}`;
+  });
 }
 
 function relativeTime(date) {
@@ -190,6 +213,42 @@ function relativeTime(date) {
 
   return date.toLocaleDateString("en-US", {
     year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+}
+
+function formatNoteTime(timestamp) {
+  const date = new Date(timestamp);
+  const now = new Date();
+
+  const sameDay =
+    date.getFullYear() === now.getFullYear() &&
+    date.getMonth() === now.getMonth() &&
+    date.getDate() === now.getDate();
+
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+
+  const isYesterday =
+    date.getFullYear() === yesterday.getFullYear() &&
+    date.getMonth() === yesterday.getMonth() &&
+    date.getDate() === yesterday.getDate();
+
+  const time = date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit"
+  });
+
+  if (sameDay) {
+    return `${relativeTime(date)}`;
+  }
+
+  if (isYesterday) {
+    return `Yesterday · ${time}`;
+  }
+
+  return date.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric"
   });
@@ -223,46 +282,54 @@ function renderNotes() {
 }
 
 function renderNoteCard(note) {
-  const isQuote = note.tags && note.tags.includes("quote");
+  const tags = Array.isArray(note.tags) ? note.tags : [];
+  const isQuote = tags.includes("quote");
 
-  const tags = note.tags && note.tags.length
-    ? `<div class="note-tags">${note.tags.map(tag => `<span>#${escapeHtml(tag)}</span>`).join("")}</div>`
+  const tagMarkup = tags.length
+    ? `<div class="note-tags">${tags.map(tag => `<span>#${escapeHtml(tag)}</span>`).join("")}</div>`
     : "";
 
-  const images = note.images && note.images.length
-    ? `<div class="note-media">${note.images.map(src => `<img src="${escapeAttribute(src)}" alt="Discord note image">`).join("")}</div>`
+  const imageMarkup = Array.isArray(note.images) && note.images.length
+    ? `<div class="note-media">${note.images.map(src => `<img src="${escapeAttribute(src)}" alt="Field note image">`).join("")}</div>`
     : "";
 
-  const videos = note.videos && note.videos.length
+  const videoMarkup = Array.isArray(note.videos) && note.videos.length
     ? `<div class="note-media">${note.videos.map(src => `<video src="${escapeAttribute(src)}" controls></video>`).join("")}</div>`
     : "";
+
+  const meta = `<div class="note-meta">${escapeHtml(formatNoteTime(note.timestamp))}</div>`;
 
   if (isQuote) {
     const quoteParts = parseQuote(note.content);
 
     return `
       <article class="note-card quote-card">
+        ${meta}
         <blockquote>${escapeHtml(quoteParts.quote)}</blockquote>
         ${quoteParts.source ? `<div class="quote-source">${escapeHtml(quoteParts.source)}</div>` : ""}
-        ${images}
-        ${videos}
-        ${tags}
+        ${imageMarkup}
+        ${videoMarkup}
+        ${tagMarkup}
       </article>
     `;
   }
 
   return `
     <article class="note-card">
+      ${meta}
       <p>${escapeHtml(note.content)}</p>
-      ${images}
-      ${videos}
-      ${tags}
+      ${imageMarkup}
+      ${videoMarkup}
+      ${tagMarkup}
     </article>
   `;
 }
 
 function parseQuote(content) {
-  const lines = String(content || "").split("\n").map(line => line.trim()).filter(Boolean);
+  const lines = String(content || "")
+    .split("\n")
+    .map(line => line.trim())
+    .filter(Boolean);
 
   if (lines.length >= 2) {
     const last = lines[lines.length - 1];
@@ -303,7 +370,7 @@ function setupFilters() {
       state.filteredNotes = state.notes;
     } else {
       state.filteredNotes = state.notes.filter(note => {
-        return note.tags && note.tags.includes(tag);
+        return Array.isArray(note.tags) && note.tags.includes(tag);
       });
     }
 
@@ -316,7 +383,10 @@ function setupPagination() {
     if (state.page > 1) {
       state.page -= 1;
       renderNotes();
-      window.scrollTo({ top: document.querySelector(".notes-feed-section").offsetTop, behavior: "smooth" });
+      window.scrollTo({
+        top: document.querySelector(".notes-feed-section").offsetTop,
+        behavior: "smooth"
+      });
     }
   });
 
@@ -326,7 +396,10 @@ function setupPagination() {
     if (state.page < totalPages) {
       state.page += 1;
       renderNotes();
-      window.scrollTo({ top: document.querySelector(".notes-feed-section").offsetTop, behavior: "smooth" });
+      window.scrollTo({
+        top: document.querySelector(".notes-feed-section").offsetTop,
+        behavior: "smooth"
+      });
     }
   });
 }
@@ -348,7 +421,11 @@ function escapeAttribute(text) {
     .replaceAll(">", "&gt;");
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearTarget = document.getElementById("year");
+
+if (yearTarget) {
+  yearTarget.textContent = new Date().getFullYear();
+}
 
 setupFilters();
 setupPagination();
