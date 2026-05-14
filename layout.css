@@ -1,5 +1,5 @@
 /* ============================================================
-   LAYOUT.CSS — page-specific modules
+   LAYOUT.CSS — page modules v3
    ============================================================ */
 
 /* ---------------- HEADER ---------------- */
@@ -44,76 +44,193 @@ header nav a.active::after {
 }
 
 /* ---------------- HERO ---------------- */
-.hero-section {
-  padding: 4rem 0 2rem;
-  border-top: none;
+#hero {
+  position: relative;
   min-height: calc(100vh - 70px);
+  padding: 3rem 0 4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .hero-meta {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--fg-muted);
-  margin-bottom: 3rem;
 }
 .hero-meta .right { text-align: right; line-height: 1.7; }
 
-.hero-name {
-  font-size: clamp(3.5rem, 14vw, 12rem);
+.hero-mid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin: 3rem 0;
+}
+
+.hero-prefix {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hl);
+}
+
+.hero-line {
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  min-height: 1.2em;
+}
+.hero-line .typed {
+  background: var(--hl);
+  color: var(--hl-ink);
+  padding: 0 0.2em;
+  display: inline-block;
+}
+.caret {
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  background: var(--hl);
+  vertical-align: -3px;
+  margin-left: 4px;
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-name-block {
+  font-size: clamp(3.5rem, 12vw, 11rem);
   font-weight: 900;
   letter-spacing: -0.055em;
   line-height: 0.88;
   text-transform: uppercase;
 }
-.hero-name .cn {
+.hero-name-block .cn {
   display: block;
-  font-size: 0.32em;
+  font-size: 0.28em;
   font-weight: 500;
   color: var(--fg-muted);
   letter-spacing: 0.02em;
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   text-transform: none;
 }
 
-.hero-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: end;
-  margin-top: 4rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--line);
-}
-.hero-tagline {
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  line-height: 1.35;
-  max-width: 30ch;
-  font-weight: 500;
-}
-.hero-tagline em {
-  font-style: normal;
-  background: var(--hl);
-  color: var(--hl-ink);
-  padding: 0 0.25em;
-}
-.hero-cta {
+.hero-foot {
   display: flex;
-  gap: 0.8rem;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
   flex-wrap: wrap;
-  justify-content: flex-end;
+}
+.hero-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+/* cat cursor (only on hero) */
+#cat-cursor {
+  position: fixed;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  will-change: transform, left, top;
+}
+#cat-cursor.visible { opacity: 1; }
+
+/* tiny corner toggle to turn cat cursor off */
+.cat-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 200;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  color: var(--fg-muted);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+.cat-toggle:hover { opacity: 1; color: var(--fg); border-color: var(--fg); }
+
+/* floating emoji that spawns when a typed phrase completes */
+#emoji-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.float-emoji {
+  position: absolute;
+  font-size: 28px;
+  animation: floatUp 3.4s ease-out forwards;
+  will-change: transform, opacity;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(0); opacity: 0; }
+  15%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(-140px) rotate(15deg); opacity: 0; }
 }
 
-@media (max-width: 720px) {
-  .hero-bottom { grid-template-columns: 1fr; gap: 1.5rem; }
-  .hero-cta { justify-content: flex-start; }
+/* ---------------- STREAM (consciousness paragraph) ---------------- */
+.stream-section {
+  padding: 5rem 0 6rem;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
 }
+.stream-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 2rem;
+}
+.stream {
+  max-width: 1000px;
+  font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.stream .ln {
+  display: block;
+  margin-bottom: 0.6em;
+  min-height: 1.1em;
+}
+.stream .ln.fade { color: var(--fg-muted); }
+.stream .ln.accent .typed-text {
+  background: var(--hl);
+  color: var(--hl-ink);
+  padding: 0 0.18em;
+}
+.stream .ln.small { font-size: 0.65em; color: var(--fg-muted); }
+.stream .micro-caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  background: currentColor;
+  vertical-align: -2px;
+  margin-left: 3px;
+  opacity: 0;
+}
+.stream .ln.typing .micro-caret { opacity: 1; animation: blink 1s steps(2) infinite; }
 
 /* ---------------- SECTION HEADERS ---------------- */
 .section-head {
@@ -162,26 +279,16 @@ header nav a.active::after {
   padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--line);
 }
-.exp-card .tag .num {
-  color: var(--fg);
-  font-weight: 600;
-}
+.exp-card .tag .num { color: var(--fg); font-weight: 600; }
 .exp-card h3 {
   font-size: 1.6rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
-.exp-card .role {
-  font-size: 0.95rem;
-  color: var(--fg-muted);
-}
-.exp-card p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--fg);
-}
+.exp-card .role { font-size: 0.95rem; color: var(--fg-muted); }
+.exp-card p { font-size: 0.95rem; line-height: 1.5; }
 
-/* ---------------- ABOUT (intro paragraph) ---------------- */
+/* ---------------- ABOUT ---------------- */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -215,7 +322,7 @@ header nav a.active::after {
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 
-/* ---------------- RESUME (HTML version) ---------------- */
+/* ---------------- RESUME (HTML) ---------------- */
 .resume-block + .resume-block { margin-top: 4rem; }
 
 .resume-block-title {
@@ -228,7 +335,6 @@ header nav a.active::after {
   padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--line);
 }
-
 .resume-item {
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -244,19 +350,9 @@ header nav a.active::after {
   color: var(--fg-muted);
   text-transform: uppercase;
 }
-.resume-item .what h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.3rem;
-}
-.resume-item .what .where {
-  color: var(--fg-muted);
-  font-size: 0.95rem;
-  margin-bottom: 0.7rem;
-}
-.resume-item .what p {
-  font-size: 0.95rem;
-  line-height: 1.55;
-}
+.resume-item .what h3 { font-size: 1.25rem; margin-bottom: 0.3rem; }
+.resume-item .what .where { color: var(--fg-muted); font-size: 0.95rem; margin-bottom: 0.7rem; }
+.resume-item .what p { font-size: 0.95rem; line-height: 1.55; }
 .resume-item .what ul {
   margin-top: 0.5rem;
   padding-left: 1.2rem;
@@ -269,7 +365,6 @@ header nav a.active::after {
   .resume-item { grid-template-columns: 1fr; gap: 0.4rem; }
 }
 
-/* ---------------- CTA strip (bottom of resume) ---------------- */
 .cta-strip {
   display: flex;
   justify-content: space-between;
@@ -280,12 +375,9 @@ header nav a.active::after {
   flex-wrap: wrap;
   gap: 1rem;
 }
-.cta-strip p {
-  font-size: 1rem;
-  color: var(--fg-muted);
-}
+.cta-strip p { font-size: 1rem; color: var(--fg-muted); }
 
-/* ---------------- BIG MARQUEE-STYLE outro ---------------- */
+/* ---------------- OUTRO ---------------- */
 .outro {
   padding: 6rem 0;
   border-top: 1px solid var(--line);
@@ -304,7 +396,7 @@ header nav a.active::after {
   padding: 0 0.15em;
 }
 
-/* ---------------- Mobile nav adjust ---------------- */
+/* ---------------- MOBILE ---------------- */
 @media (max-width: 640px) {
   header .container { padding: 0.8rem 1.2rem; }
   header nav { gap: 1rem; }
@@ -312,4 +404,5 @@ header nav a.active::after {
   .container { padding: 0 1.2rem; }
   .section { padding: 4rem 0; }
   .h-scroll { padding: 0 1.2rem 1.5rem; margin: 0 -1.2rem; }
+  .cat-toggle { display: none; }
 }
