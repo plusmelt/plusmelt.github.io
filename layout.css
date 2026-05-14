@@ -69,8 +69,10 @@ header nav a.active::after {
 .hero-mid {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.6rem;
   margin: 3rem 0;
+  /* fixed-ish vertical rhythm — nothing inside should change height */
+  align-items: flex-start;
 }
 
 .hero-prefix {
@@ -82,17 +84,28 @@ header nav a.active::after {
 }
 
 .hero-line {
-  font-size: clamp(2rem, 5.5vw, 4.5rem);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-  min-height: 1.2em;
+  font-size: clamp(1.6rem, 3.8vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  /* fixed height stops the page from jumping as letters type/erase */
+  height: 1.4em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-line-inner {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-wrap: nowrap;
 }
 .hero-line .typed {
   background: var(--hl);
   color: var(--hl-ink);
   padding: 0 0.2em;
   display: inline-block;
+  margin-left: 0.3em;
 }
 .caret {
   display: inline-block;
@@ -106,19 +119,19 @@ header nav a.active::after {
 @keyframes blink { 50% { opacity: 0; } }
 
 .hero-name-block {
-  font-size: clamp(3.5rem, 12vw, 11rem);
+  font-size: clamp(2.5rem, 7vw, 6rem);
   font-weight: 900;
-  letter-spacing: -0.055em;
-  line-height: 0.88;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
   text-transform: uppercase;
 }
 .hero-name-block .cn {
   display: block;
-  font-size: 0.28em;
+  font-size: 0.3em;
   font-weight: 500;
   color: var(--fg-muted);
   letter-spacing: 0.02em;
-  margin-top: 0.5rem;
+  margin-top: 0.7rem;
   text-transform: none;
 }
 
