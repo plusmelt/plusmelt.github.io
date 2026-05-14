@@ -1,27 +1,24 @@
 /* ============================================================
-   GLOBAL.CSS — Karol Jia
-   Black / White / one accent.
+   GLOBAL.CSS — Karol Jia v3
+   Black / White + electric lime accent
    ============================================================ */
 
 :root {
-  /* ---- Light theme (default) ---- */
-  --bg:        #f5f4f0;     /* warm off-white */
-  --bg-elev:  #ffffff;
-  --fg:        #0a0a0a;     /* near-black */
+  --bg:        #f5f4f0;
+  --bg-elev:   #ffffff;
+  --fg:        #0a0a0a;
   --fg-muted:  #6b6b6b;
   --line:      #d6d4cc;
-  --accent:    #1a1a1a;     /* on light: accent IS deep black for type */
-  --hl:        #d4ff3a;     /* signature electric lime — used as block */
-  --hl-ink:    #0a0a0a;     /* text on lime */
+  --hl:        #d4ff3a;
+  --hl-ink:    #0a0a0a;
 }
 
 [data-theme="dark"] {
   --bg:        #0a0a0a;
-  --bg-elev:  #141414;
+  --bg-elev:   #141414;
   --fg:        #f5f4f0;
   --fg-muted:  #8a8a85;
   --line:      #262624;
-  --accent:    #f5f4f0;
   --hl:        #d4ff3a;
   --hl-ink:    #0a0a0a;
 }
@@ -39,9 +36,12 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
-/* ---------- Typography ---------- */
+/* hide native cursor only inside the hero zone when cat-cursor is on */
+body.cat-cursor-on #hero,
+body.cat-cursor-on #hero * { cursor: none !important; }
 
 h1, h2, h3, h4 {
   font-family: 'Inter', sans-serif;
@@ -49,34 +49,16 @@ h1, h2, h3, h4 {
   letter-spacing: -0.03em;
   line-height: 0.95;
 }
-
-h1 {
-  font-size: clamp(3.5rem, 13vw, 11rem);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-}
-
 h2 {
   font-size: clamp(2.2rem, 6vw, 4.5rem);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.04em;
 }
+h3 { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; }
+p  { font-size: 1rem; }
 
-h3 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-p { font-size: 1rem; }
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
+a { color: inherit; text-decoration: none; transition: opacity 0.2s ease; }
 a:hover { opacity: 0.6; }
 
 .muted { color: var(--fg-muted); }
@@ -88,29 +70,22 @@ a:hover { opacity: 0.6; }
   text-transform: uppercase;
 }
 
-/* highlight chip — the accent color block */
 .hl {
   background: var(--hl);
   color: var(--hl-ink);
-  padding: 0 0.2em;
-  display: inline-block;
+  padding: 0 0.22em;
 }
-
-/* ---------- Layout primitives ---------- */
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
-
-.row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.row   { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
 .stack { display: flex; flex-direction: column; gap: 1.25rem; }
 
 .section { padding: 6rem 0; border-top: 1px solid var(--line); }
 .section:first-of-type { border-top: none; }
-
-/* ---------- Buttons ---------- */
 
 .btn {
   display: inline-block;
@@ -124,23 +99,16 @@ a:hover { opacity: 0.6; }
   transition: all 0.2s ease;
   cursor: pointer;
   background: transparent;
+  font-family: inherit;
 }
-.btn:hover {
-  background: var(--fg);
-  color: var(--bg);
-  opacity: 1;
-}
+.btn:hover { background: var(--fg); color: var(--bg); opacity: 1; }
 
 .btn-primary {
   background: var(--hl);
   color: var(--hl-ink);
   border-color: var(--hl);
 }
-.btn-primary:hover {
-  background: var(--fg);
-  color: var(--bg);
-  border-color: var(--fg);
-}
+.btn-primary:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
 .iconbtn {
   background: transparent;
@@ -154,10 +122,9 @@ a:hover { opacity: 0.6; }
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  font-family: inherit;
 }
 .iconbtn:hover { border-color: var(--fg); }
-
-/* ---------- Footer ---------- */
 
 footer {
   padding: 3rem 0;
@@ -166,7 +133,6 @@ footer {
   color: var(--fg-muted);
 }
 
-/* ---------- Scrollbar (horizontal galleries) ---------- */
 .h-scroll::-webkit-scrollbar { height: 6px; }
 .h-scroll::-webkit-scrollbar-track { background: transparent; }
 .h-scroll::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
