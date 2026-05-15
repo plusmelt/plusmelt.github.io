@@ -188,17 +188,22 @@
   function burstEmoji(em) {
     if (!stage) return;
 
-    var el = document.createElement('div');
-    el.className = 'float-emoji';
-    el.textContent = em;
-    el.style.right = (40 + Math.random() * 200) + 'px';
-    el.style.bottom = (30 + Math.random() * 30) + '%';
+    var count = 1 + Math.floor(Math.random() * 3);
 
-    stage.appendChild(el);
+    for (var i = 0; i < count; i++) {
+      var el = document.createElement('div');
+      el.className = 'float-emoji';
+      el.textContent = em;
+      el.style.right = (35 + Math.random() * 230) + 'px';
+      el.style.bottom = (26 + Math.random() * 36) + '%';
+      el.style.animationDelay = (i * 80) + 'ms';
 
-    setTimeout(function () {
-      el.remove();
-    }, 3500);
+      stage.appendChild(el);
+
+      setTimeout(function (node) {
+        node.remove();
+      }, 3700, el);
+    }
   }
 
   heroStep();
