@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Karol Jia — Publications &amp; Presentations</title>
+
+  <link rel="icon" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="layout.css">
+
+  <style>
+    /* publications-specific tweaks */
+    .pub-hero {
+      padding: 7rem 0 4rem;
+      border-top: none;
+    }
+    .pub-hero h1 {
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .pub-hero .pub-intro {
+      max-width: 60ch;
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      line-height: 1.55;
+      color: var(--fg-muted);
+    }
+    .pub-hero .pub-intro strong { color: var(--fg); font-weight: 500; }
+
+    .pub-section { padding: 4rem 0; border-top: 1px solid var(--line); }
+    .pub-section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 0.6rem;
+    }
+    .pub-section h2 {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .pub-section h2 .slash { color: var(--hl); }
+
+    .pub-entry {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .pub-entry:last-child { border-bottom: none; }
+
+    .pub-entry .pub-when {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      padding-top: 0.3rem;
+    }
+    .pub-entry .pub-body {
+      font-family: 'Source Serif 4', Georgia, serif;
+    }
+    .pub-entry .pub-title {
+      font-size: 1.3rem;
+      line-height: 1.35;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: var(--fg);
+      letter-spacing: -0.01em;
+    }
+    .pub-entry .pub-title em {
+      font-style: italic;
+    }
+    .pub-entry .pub-meta {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--fg-muted);
+      font-family: 'Inter', sans-serif;
+    }
+    .pub-entry .pub-meta .venue {
+      color: var(--fg);
+      font-weight: 500;
+    }
+    .pub-entry .pub-status {
+      display: inline-block;
+      margin-top: 0.7rem;
+      background: var(--hl);
+      color: var(--hl-ink);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      font-weight: 600;
+    }
+    .pub-entry .pub-abstract {
+      margin-top: 0.8rem;
+      font-size: 0.98rem;
+      line-height: 1.55;
+      color: var(--fg);
+      font-family: 'Inter', sans-serif;
+      max-width: 65ch;
+    }
+
+    @media (max-width: 720px) {
+      .pub-entry { grid-template-columns: 1fr; gap: 0.4rem; }
+      .pub-entry .pub-when { padding-top: 0; }
+    }
+
+    .pub-empty {
+      padding: 1rem 0;
+      color: var(--fg-muted);
+      font-style: italic;
+      font-size: 0.95rem;
+      font-family: 'Source Serif 4', Georgia, serif;
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="container">
+    <div class="brand"><a href="index.html">Karol Jia / 佳嵘</a></div>
+    <nav>
+      <a href="index.html#about">about</a>
+      <a href="index.html#experience">work</a>
+      <a href="index.html#resume">resume</a>
+      <a href="publications.html" class="active">publications</a>
+      <a href="https://sites.google.com/view/karoljiaportfolio/profile"
+         target="_blank" rel="noopener noreferrer">cv ↗</a>
+      <button id="themeToggle" class="iconbtn" type="button"
+              aria-label="Toggle theme" title="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="pub-hero">
+  <div class="container">
+    <div class="mono muted" style="margin-bottom:1.2rem;">— Karol Jia · scholarly record</div>
+    <h1>Publications<br>&amp; Talks</h1>
+    <p class="pub-intro">
+      <strong>Peer-reviewed manuscripts, conference presentations, and works in progress.</strong>
+      Most current work sits at the intersection of generative AI, learning technologies, and
+      equity in education. Items marked <span class="hl">under review</span> are out for peer review;
+      please request a copy directly.
+    </p>
+  </div>
+</section>
+
+<!-- ============ MANUSCRIPTS ============ -->
+<section class="pub-section">
+  <div class="container">
+    <div class="pub-section-title">01 — Manuscripts</div>
+    <h2>Under <span class="slash">/</span> Review</h2>
+
+    <div class="pub-entry">
+      <div class="pub-when">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">First-author manuscript on deliberate exposure to AI hallucinations as training for evaluative judgment in medical education.</div>
+        <div class="pub-meta">
+          <span class="venue">Currently out for peer review.</span>
+        </div>
+        <span class="pub-status">under review</span>
+        <p class="pub-abstract">
+          Argues that structured exposure to AI-generated errors can train medical learners to
+          bridge the verification gap — closing the distance between knowing an AI may be wrong
+          and being able to demonstrate when and why. Draws on theories of productive failure
+          and cognitive friction. Title and journal withheld pending review outcome; please
+          email for the manuscript.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONFERENCE PRESENTATIONS ============ -->
+<section class="pub-section">
+  <div class="container">
+    <div class="pub-section-title">02 — Presentations</div>
+    <h2>Conference <span class="slash">/</span> Talks</h2>
+
+    <div class="pub-entry">
+      <div class="pub-when">Apr 17, 2026</div>
+      <div class="pub-body">
+        <div class="pub-title">"When Discipline Becomes Ambiguous Harm: Rethinking Responsibility in School Responses."</div>
+        <div class="pub-meta">
+          <span class="venue">School of Education I.D.E.A.S. Conference</span> ·
+          Johns Hopkins University · Baltimore, MD.
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <div class="pub-when">Feb 28, 2026</div>
+      <div class="pub-body">
+        <div class="pub-title">"Who Bears the Cost of Verification? Generative AI, Educational Equity, and Policy Challenges Across Educational Systems."</div>
+        <div class="pub-meta">
+          <span class="venue">WCCIET 2026 Annual Graduate Student Research Conference</span> ·
+          George Washington University · Washington, DC.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVE RESEARCH ============ -->
+<section class="pub-section">
+  <div class="container">
+    <div class="pub-section-title">03 — Active research</div>
+    <h2>In <span class="slash">/</span> Progress</h2>
+
+    <div class="pub-entry">
+      <div class="pub-when">2026—</div>
+      <div class="pub-body">
+        <div class="pub-title">Multiagent LLM Scaffolding for Simulated Clinical Consultations.</div>
+        <div class="pub-meta">
+          <span class="venue">Johns Hopkins School of Education</span> · ongoing research project.
+        </div>
+        <p class="pub-abstract">
+          Built and evaluated a multiagent large language model system that distributes patient
+          interaction, tutoring, checklist monitoring, and final feedback across specialized agents
+          to scaffold simulated medical consultations. Preliminary findings: gains concentrated in
+          communication quality — empathic expression and detailed information gathering — rather
+          than diagnostic correctness.
+        </p>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <div class="pub-when">2025—</div>
+      <div class="pub-body">
+        <div class="pub-title">Hallucination-Aware Learning (HAL) Framework.</div>
+        <div class="pub-meta">
+          <span class="venue">Co-authored research project</span> · medical education.
+        </div>
+        <p class="pub-abstract">
+          Co-developing an instructional framework that treats generative AI errors not as
+          failures to suppress, but as designed opportunities to strengthen learners' verification
+          skills, evaluative judgment, and critical engagement. Integrates productive failure,
+          cognitive friction, and AI-supported learning design.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / OUTRO ============ -->
+<section class="outro">
+  <div class="container">
+    <p class="mono muted" style="margin-bottom:1.5rem;">— request a copy / collaborate</p>
+    <h2 class="outro-text">
+      For drafts<span class="accent">,</span><br>
+      reprints,<br>
+      or coffee.
+    </h2>
+    <div class="row" style="margin-top:3rem;">
+      <a class="btn btn-primary" href="mailto:rjia9@jh.edu?subject=Manuscript%20request">rjia9@jh.edu</a>
+      <a class="btn" href="index.html">← Back to home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container row" style="justify-content:space-between;">
+    <p>© <span id="year"></span> Karol Jia · 佳嵘</p>
+    <p class="mono">scholarly record · v1</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const body = document.body;
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme');
+  if (saved) body.setAttribute('data-theme', saved);
+  syncIcon();
+  btn?.addEventListener('click', () => {
+    const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    body.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    syncIcon();
+  });
+  function syncIcon(){
+    if (!btn) return;
+    btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾';
+  }
+</script>
+
+</body>
+</html>
