@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Karol Jia — AI · Equity · Education</title>
+  <title>Karol Jia — Generative AI · Learning Tech · Equity</title>
 
   <link rel="icon" href="favicon.png">
 
@@ -23,11 +23,11 @@
     <div class="brand">Karol Jia / 佳嵘</div>
     <nav>
       <a href="#about" class="active">about</a>
+      <a href="#experience">work</a>
       <a href="#resume">resume</a>
-      <a href="publications.html">writing</a>
-      <a class="cv-link" href="https://sites.google.com/view/karoljiaportfolio/profile"
-         target="_blank" rel="noopener noreferrer">CV ↗</a>
-      <a href="notes.html">notes</a>
+      <a href="publications.html">publications</a>
+      <a href="https://sites.google.com/view/karoljiaportfolio/profile"
+         target="_blank" rel="noopener noreferrer">cv ↗</a>
       <button id="themeToggle" class="iconbtn" type="button"
               aria-label="Toggle theme" title="Toggle theme">☾</button>
     </nav>
@@ -43,16 +43,9 @@
         <div>M.S.Ed. · Johns Hopkins</div>
         <div>School of Education / 2025–26</div>
       </div>
-
       <div class="right">
-        <div class="time-row">
-          <span>Baltimore, MD</span>
-          <span id="easternTime">—</span>
-        </div>
-        <div class="time-row">
-          <span>Shanghai, China</span>
-          <span id="shanghaiTime">—</span>
-        </div>
+        <div>Catonsville, MD</div>
+        <div id="liveTime">—</div>
       </div>
     </div>
 
@@ -61,8 +54,16 @@
 
       <h1 class="hero-name-block">
         Karol
-        <span class="cn">佳嵘 · 一个对教育有点想法的人</span>
+        <span class="cn">佳嵘 · M.S.Ed. researcher at Johns Hopkins</span>
       </h1>
+
+      <div class="hero-tagline-row">
+        <span class="hl">Generative AI</span>
+        <span class="dot">·</span>
+        <span class="hl">Learning Tech</span>
+        <span class="dot">·</span>
+        <span class="hl">Equity</span>
+      </div>
 
       <div class="hero-line">
         <span class="hero-line-inner">
@@ -83,21 +84,31 @@
 
   </div>
 
+  <!-- emoji bursts (positioned inside #hero) -->
   <div id="emoji-stage"></div>
 
+  <!-- the cat cursor (rendered as <img> but hidden until hero is hovered) -->
   <svg id="cat-cursor" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- ears -->
     <path d="M6 16 L10 4 L18 12 Z" fill="#0a0a0a" stroke="#d4ff3a" stroke-width="1" stroke-linejoin="round"/>
     <path d="M38 16 L34 4 L26 12 Z" fill="#0a0a0a" stroke="#d4ff3a" stroke-width="1" stroke-linejoin="round"/>
+    <!-- inner ears -->
     <path d="M9 8 L11 12 L14 11 Z" fill="#d4ff3a"/>
     <path d="M35 8 L33 12 L30 11 Z" fill="#d4ff3a"/>
+    <!-- head -->
     <ellipse cx="22" cy="24" rx="15" ry="13" fill="#0a0a0a" stroke="#d4ff3a" stroke-width="1"/>
+    <!-- bangs / fringe (剑齐刘海) -->
     <path d="M9 18 Q12 22 14 17 Q15 22 17 18 Q19 23 22 18 Q25 23 27 18 Q29 22 30 17 Q32 22 35 18 L35 22 L9 22 Z"
           fill="#0a0a0a" stroke="#d4ff3a" stroke-width="0.8" stroke-linejoin="round"/>
+    <!-- eyes (sharp / cool) -->
     <path d="M15 25 L19 25" stroke="#d4ff3a" stroke-width="1.6" stroke-linecap="round"/>
     <path d="M25 25 L29 25" stroke="#d4ff3a" stroke-width="1.6" stroke-linecap="round"/>
+    <!-- nose -->
     <path d="M22 28 L20.5 30 L22 30.8 L23.5 30 Z" fill="#d4ff3a"/>
+    <!-- mouth -->
     <path d="M22 30.8 Q20 32.5 18.5 32 M22 30.8 Q24 32.5 25.5 32"
           stroke="#d4ff3a" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <!-- whiskers -->
     <line x1="8" y1="25" x2="3" y2="24" stroke="#d4ff3a" stroke-width="0.6"/>
     <line x1="8" y1="27" x2="3" y2="28" stroke="#d4ff3a" stroke-width="0.6"/>
     <line x1="36" y1="25" x2="41" y2="24" stroke="#d4ff3a" stroke-width="0.6"/>
@@ -112,11 +123,11 @@
 
     <div class="stream" id="streamBlock">
       <span class="ln" data-text="What I actually do, said badly:"></span>
-      <span class="ln accent" data-wrap="typed-text" data-text="I study how AI breaks — and sometimes fixes — schools."></span>
-      <span class="ln fade" data-text="More precisely: how generative tools redistribute (or reproduce) academic advantage."></span>
-      <span class="ln fade" data-text="Less precisely: I read papers, talk to teachers, write memos no one asked for."></span>
-      <span class="ln" data-text="Lately I think a lot about who AI in classrooms actually serves."></span>
-      <span class="ln small" data-text="(spoiler: not always the kid who needs it most.)"></span>
+      <span class="ln accent" data-wrap="typed-text" data-text="I study how AI learns to teach — and what gets lost in translation."></span>
+      <span class="ln fade" data-text="More precisely: how generative AI reshapes learning, judgment, and who has to verify whom."></span>
+      <span class="ln fade" data-text="Less precisely: I prompt a lot of LLMs, watch them hallucinate, and write down what we should learn from that."></span>
+      <span class="ln" data-text="Lately I think a lot about who bears the cost of verification in classrooms with AI."></span>
+      <span class="ln small" data-text="(spoiler: rarely the student with the most support to begin with.)"></span>
     </div>
   </div>
 </section>
@@ -137,18 +148,20 @@
       <div class="about-text">
         <p>
           I'm a graduate researcher at <strong>Johns Hopkins School of Education</strong>,
-          studying how AI is reshaping access, assessment, and equity in classrooms
-          across borders.
+          working at the intersection of <span class="hl">generative AI</span>,
+          <span class="hl">learning technologies</span>, and
+          <span class="hl">educational equity</span>.
         </p>
         <p>
-          My background bridges <span class="hl">business</span>, <span class="hl">history</span>,
-          and <span class="hl">education policy</span> — I'm interested in what
-          translates across systems, and what doesn't.
+          My current projects examine how <em>multiagent LLM systems</em> can scaffold
+          clinical learning, and how <em>structured exposure to AI hallucinations</em>
+          can train evaluative judgment in medical education. I have a manuscript
+          <em>out for review</em> as first author.
         </p>
         <p class="muted" style="font-size:1rem; line-height:1.6;">
-          Currently based in the DC–Baltimore corridor. Previously @The Ohio State
-          University (Fisher College of Business), graduated cum laude with a B.S. in
-          Business Administration, Marketing major and History minor.
+          Currently based in the DC–Baltimore corridor. Previously studied at The Ohio State
+          University (Fisher College of Business), where I graduated cum laude with majors
+          in Marketing and a minor in History.
         </p>
       </div>
     </div>
@@ -169,47 +182,57 @@
       <article class="exp-card">
         <div class="tag">
           <span class="num">01</span>
-          <span>Baltimore, MD · 2025–2026</span>
+          <span>Baltimore, MD · 2026–present</span>
         </div>
-        <h3>Johns Hopkins University</h3>
-        <p class="role">M.S.Ed. — Applied Research Track</p>
-        <p>Focus on AI in education, educational equity, and policy analysis. School of Education, Homewood campus.</p>
+        <h3>Multiagent LLM Scaffolding for Clinical Consultations</h3>
+        <p class="role">Researcher · JHU School of Education</p>
+        <p>Built and evaluated a multiagent system that distributes patient interaction, tutoring, checklist monitoring, and feedback across specialized LLM agents. Gains concentrated in communication quality — empathic expression, deeper information gathering — rather than diagnostic correctness.</p>
       </article>
 
       <article class="exp-card">
         <div class="tag">
           <span class="num">02</span>
-          <span>Columbus, OH · 2021–2024</span>
+          <span>Baltimore, MD · Nov 2025–present</span>
         </div>
-        <h3>The Ohio State University</h3>
-        <p class="role">B.S. Business Administration · Fisher College</p>
-        <p>Marketing major, History minor. Cum laude · Dean's List ×5 · Allen Family Scholarship.</p>
+        <h3>Hallucination-Aware Learning (HAL) Framework</h3>
+        <p class="role">Co-author · medical education research</p>
+        <p>Co-developing a framework for using generative AI errors as learning opportunities. Integrates productive failure, cognitive friction, and AI-supported learning design to strengthen learners' verification skills and evaluative judgment.</p>
       </article>
 
       <article class="exp-card">
         <div class="tag">
           <span class="num">03</span>
-          <span>Research · ongoing</span>
+          <span>Conferences · 2026</span>
         </div>
-        <h3>AI &amp; Equity in Education</h3>
-        <p class="role">Independent &amp; coursework projects</p>
-        <p>Examining how generative AI tools redistribute — or reproduce — academic advantage in K-12 and higher education contexts.</p>
+        <h3>Conference Presentations</h3>
+        <p class="role">2 presentations · JHU IDEAS &amp; WCCIET (GW)</p>
+        <p>"When Discipline Becomes Ambiguous Harm" — on responsibility in school responses. And "Who Bears the Cost of Verification?" — on generative AI, equity, and policy across educational systems.</p>
       </article>
 
       <article class="exp-card">
         <div class="tag">
           <span class="num">04</span>
-          <span>Writing · 2024–</span>
+          <span>Columbus, OH · Oct 2023 – Feb 2024</span>
         </div>
-        <h3>Policy &amp; Commentary</h3>
-        <p class="role">Selected publications</p>
-        <p>Short-form pieces on education policy, technology adoption, and cross-system comparisons. See the <a href="publications.html" style="border-bottom:1px solid currentColor;">writing</a> page.</p>
+        <h3>Ride4Refugee Project</h3>
+        <p class="role">Student Assistant · community-based research</p>
+        <p>Designed surveys on transportation barriers and community needs for refugee populations in Columbus. Synthesized findings into a report with actionable recommendations; collaborated with the Central Ohio Transit Authority on solution planning.</p>
+      </article>
+
+      <article class="exp-card">
+        <div class="tag">
+          <span class="num">05</span>
+          <span>Columbus, OH · 2021–24</span>
+        </div>
+        <h3>The Ohio State University</h3>
+        <p class="role">B.S. Business Administration · Fisher College</p>
+        <p>Marketing major (GPA 3.85) · History minor (GPA 3.9). Cum laude · Dean's List ×5 · Allen Family Scholarship.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ RESUME HTML ============ -->
+<!-- ============ RESUME (HTML) ============ -->
 <section id="resume" class="section">
   <div class="container">
 
@@ -218,6 +241,18 @@
       <h2>The <span class="slash">/</span> long form</h2>
     </div>
 
+    <!-- Research Interests -->
+    <div class="resume-block">
+      <div class="resume-block-title">Research Interests</div>
+      <div class="resume-item">
+        <div class="when">Areas</div>
+        <div class="what">
+          <p>Generative AI in Education · Learning Technologies · Instructional Design · Educational Equity · Evaluative Judgment.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
     <div class="resume-block">
       <div class="resume-block-title">Education</div>
 
@@ -225,8 +260,8 @@
         <div class="when">Aug 2025 — Aug 2026</div>
         <div class="what">
           <h3>Johns Hopkins University</h3>
-          <div class="where">M.S.Ed., Applied Research Track · School of Education</div>
-          <p>Coursework and applied research focused on AI in education, educational equity, and policy analysis.</p>
+          <div class="where">M.S. in Education · Baltimore, MD</div>
+          <p>Relevant coursework: Social Research; Statistics; Global Education Policy and Analysis; Qualitative Inquiry; Global Trends in Education.</p>
         </div>
       </div>
 
@@ -234,81 +269,126 @@
         <div class="when">Aug 2021 — Dec 2024</div>
         <div class="what">
           <h3>The Ohio State University</h3>
-          <div class="where">B.S. Business Administration · Fisher College of Business</div>
-          <p>Marketing major · History minor · graduated cum laude.</p>
+          <div class="where">B.S. Business Administration · Fisher College of Business · Columbus, OH</div>
+          <p>Marketing major (GPA 3.85/4.0) · History minor (GPA 3.9/4.0).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research & Professional Experience -->
+    <div class="resume-block">
+      <div class="resume-block-title">Research &amp; Professional Experience</div>
+
+      <div class="resume-item">
+        <div class="when">2026 — present<br>Baltimore, MD</div>
+        <div class="what">
+          <h3>Researcher · Multiagent LLM Scaffolding for Simulated Clinical Consultations</h3>
           <ul>
-            <li>Dean's List (5×)</li>
-            <li>Allen Family Scholarship ($700)</li>
+            <li>Built and evaluated a multiagent large language model system that distributes patient interaction, tutoring, checklist monitoring, and final feedback across specialized agents to scaffold simulated medical consultations.</li>
+            <li>Found that multiagent scaffolding improved overall consultation quality — with gains concentrated in communication, empathic expression, and detailed information gathering — rather than in diagnostic correctness.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="resume-item">
+        <div class="when">Nov 2025 — present<br>Baltimore, MD</div>
+        <div class="what">
+          <h3>Co-author · Hallucination-Aware Learning Research Project</h3>
+          <ul>
+            <li>Co-developed a Hallucination-Aware Learning (HAL) framework for generative AI use in medical education.</li>
+            <li>Examined how structured exposure to AI-generated errors may strengthen learners' verification skills, evaluative judgment, and critical engagement.</li>
+            <li>Integrated theories of productive failure, cognitive friction, and AI-supported learning design to conceptualize instructional responses to hallucination risks.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="resume-item">
+        <div class="when">Oct 2023 — Feb 2024<br>Columbus, OH</div>
+        <div class="what">
+          <h3>Student Assistant · Ride4Refugee Project</h3>
+          <ul>
+            <li>Designed and distributed surveys to investigate transportation barriers and community needs among refugee populations in Columbus.</li>
+            <li>Synthesized qualitative and quantitative findings into a report with actionable recommendations for community stakeholders.</li>
+            <li>Collaborated with the Central Ohio Transit Authority on solution-oriented planning, gaining experience in community-based research and policy-adjacent program implementation.</li>
           </ul>
         </div>
       </div>
     </div>
 
+    <!-- Conference Presentations -->
     <div class="resume-block">
-      <div class="resume-block-title">Research &amp; Projects</div>
+      <div class="resume-block-title">Conference Presentations</div>
 
       <div class="resume-item">
-        <div class="when">2025 — present</div>
+        <div class="when">Apr 17, 2026</div>
         <div class="what">
-          <h3>AI Adoption &amp; Equity in K-12</h3>
-          <div class="where">Applied research · JHU School of Education</div>
-          <p>Investigating how access to generative AI tools varies across socioeconomic and geographic lines, and what design and policy interventions can narrow rather than widen those gaps.</p>
+          <h3>"When Discipline Becomes Ambiguous Harm: Rethinking Responsibility in School Responses"</h3>
+          <div class="where">School of Education I.D.E.A.S. Conference · Johns Hopkins University · Baltimore, MD</div>
+        </div>
+      </div>
+
+      <div class="resume-item">
+        <div class="when">Feb 28, 2026</div>
+        <div class="what">
+          <h3>"Who Bears the Cost of Verification? Generative AI, Educational Equity, and Policy Challenges Across Educational Systems"</h3>
+          <div class="where">WCCIET 2026 Annual Graduate Student Research Conference · George Washington University · Washington, DC</div>
         </div>
       </div>
     </div>
 
+    <!-- Manuscripts in Progress -->
     <div class="resume-block">
-      <div class="resume-block-title">Skills &amp; Tools</div>
+      <div class="resume-block-title">Manuscripts</div>
+
       <div class="resume-item">
-        <div class="when">Methods</div>
-        <div class="what"><p>Qualitative research, policy analysis, comparative education, survey design.</p></div>
+        <div class="when">Out for review</div>
+        <div class="what">
+          <h3>First-author manuscript</h3>
+          <p>On deliberate exposure to AI hallucinations as training for evaluative judgment in medical education. Currently under peer review.</p>
+        </div>
       </div>
+    </div>
+
+    <!-- Honors -->
+    <div class="resume-block">
+      <div class="resume-block-title">Honors &amp; Awards</div>
+      <div class="resume-item">
+        <div class="when">2024</div>
+        <div class="what">
+          <p>Cum Laude · The Ohio State University.</p>
+          <ul>
+            <li>Dean's List · 5 semesters</li>
+            <li>Allen Family Scholarship</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills & Tools -->
+    <div class="resume-block">
+      <div class="resume-block-title">Research Tools &amp; Languages</div>
       <div class="resume-item">
         <div class="when">Tools</div>
-        <div class="what"><p>R, Stata, Excel, Tableau, Qualtrics, NVivo, LaTeX.</p></div>
+        <div class="what"><p>Stata · SPSS · Qualtrics · Survey design · Zotero · Python · C++.</p></div>
       </div>
       <div class="resume-item">
         <div class="when">Languages</div>
-        <div class="what"><p>English (fluent) · Mandarin Chinese (native).</p></div>
+        <div class="what">
+          <p>
+            Mandarin Chinese (native) · English (fluent) ·
+            Cantonese (conversational) · Korean (basic).
+          </p>
+        </div>
       </div>
     </div>
 
     <div class="cta-strip">
-      <p>Prefer the PDF? Grab the full one-pager.</p>
+      <p>A downloadable PDF version is coming soon.</p>
       <div class="row">
-        <a class="btn" href="assets/Karol_Jia_Resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a>
-        <a class="btn btn-primary" href="assets/Karol_Jia_Resume.pdf" download>Download</a>
+        <a class="btn" href="mailto:rjia9@jh.edu?subject=CV%20request">Request CV via email</a>
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ============ FIELD NOTES PREVIEW ============ -->
-<section id="notes-preview" class="section notes-preview-section">
-  <div class="container">
-    <div class="notes-preview-head">
-      <div>
-        <span class="label">04 — Notes</span>
-        <h2>Field <span class="slash">/</span> Notes</h2>
-      </div>
-
-      <div class="notes-preview-meta" id="latestNoteTime">
-        last update loading...
-      </div>
-    </div>
-
-    <p class="notes-preview-intro">
-      Small fragments from reading, research, daily life, and the unfinished parts of becoming.
-    </p>
-
-    <div id="latest-note-card" class="latest-note-card">
-      <p class="muted">Loading latest note...</p>
-    </div>
-
-    <div class="notes-preview-action">
-      <a class="btn" href="notes.html">more notes</a>
-    </div>
   </div>
 </section>
 
@@ -335,94 +415,10 @@
   </div>
 </footer>
 
+<!-- the toggle that turns cat cursor on/off -->
 <button class="cat-toggle" id="catToggle" aria-label="Toggle cat cursor">
   <span id="catToggleLabel">cat: on 🐈</span>
 </button>
-
-<script>
-async function loadLatestNotePreview() {
-  const card = document.getElementById("latest-note-card");
-  const time = document.getElementById("latestNoteTime");
-
-  if (!card || !time) {
-    return;
-  }
-
-  try {
-    const response = await fetch("https://plusmelt.org/api/notes", {
-      cache: "no-store"
-    });
-
-    const data = await response.json();
-    const notes = Array.isArray(data.notes) ? data.notes : [];
-
-    if (!notes.length) {
-      card.innerHTML = '<p class="muted">No notes yet.</p>';
-      time.textContent = "last update unavailable";
-      return;
-    }
-
-    const latest = notes[0];
-    const latestDate = new Date(latest.timestamp);
-
-    time.textContent = `last update ${relativePreviewTime(latestDate)}`;
-
-    const tags = latest.tags && latest.tags.length
-      ? `<div class="note-tags">${latest.tags.map(tag => `<span>#${escapePreviewHtml(tag)}</span>`).join("")}</div>`
-      : "";
-
-    card.innerHTML = `
-      <article>
-        <p>${escapePreviewHtml(latest.content)}</p>
-        ${tags}
-      </article>
-    `;
-  } catch (error) {
-    card.innerHTML = '<p class="muted">Latest note could not be loaded.</p>';
-    time.textContent = "last update unavailable";
-  }
-}
-
-function relativePreviewTime(date) {
-  const seconds = Math.max(1, Math.floor((Date.now() - date.getTime()) / 1000));
-
-  if (seconds < 60) {
-    return `${seconds}s ago`;
-  }
-
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) {
-    return `${minutes}m ago`;
-  }
-
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) {
-    return `${hours}h ago`;
-  }
-
-  const days = Math.floor(hours / 24);
-  if (days < 30) {
-    return `${days}d ago`;
-  }
-
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric"
-  });
-}
-
-function escapePreviewHtml(text) {
-  return String(text || "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-loadLatestNotePreview();
-</script>
 
 <script src="app.js"></script>
 </body>
