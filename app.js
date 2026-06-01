@@ -5,15 +5,20 @@
 // ---------- year + time ----------
 document.getElementById('year').textContent = new Date().getFullYear();
 
-const liveTime = document.getElementById('liveTime');
+const liveMD = document.getElementById('liveTimeMD');
+const liveSH = document.getElementById('liveTimeSH');
 function tick(){
-  if (!liveTime) return;
   const now = new Date();
-  const t = now.toLocaleTimeString('en-US', {
-    hour: '2-digit', minute: '2-digit',
-    timeZone: 'America/New_York'
-  });
-  liveTime.textContent = t + ' ET';
+  if (liveMD) {
+    liveMD.textContent = now.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', timeZone: 'America/New_York'
+    });
+  }
+  if (liveSH) {
+    liveSH.textContent = now.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Shanghai'
+    });
+  }
 }
 tick();
 setInterval(tick, 30 * 1000);
@@ -125,13 +130,22 @@ heroStep();
 
 function burstEmoji(em){
   if (!stage) return;
-  const el = document.createElement('div');
-  el.className = 'float-emoji';
-  el.textContent = em;
-  el.style.right  = (40 + Math.random() * 200) + 'px';
-  el.style.bottom = (30 + Math.random() * 30) + '%';
-  stage.appendChild(el);
-  setTimeout(() => el.remove(), 3500);
+  // spawn 1–3 emoji per burst, slightly staggered in time and position
+  const count = 1 + Math.floor(Math.random() * 3); // 1, 2, or 3
+  for (let i = 0; i < count; i++){
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'float-emoji';
+      el.textContent = em;
+      el.style.right  = (30 + Math.random() * 260) + 'px';
+      el.style.bottom = (25 + Math.random() * 40) + '%';
+      // small per-instance scale variation so multiples don't look stamped
+      const scale = 0.92 + Math.random() * 0.16; // 0.92–1.08
+      el.style.setProperty('--emoji-scale', scale.toFixed(2));
+      stage.appendChild(el);
+      setTimeout(() => el.remove(), 3500);
+    }, i * 180); // 180ms stagger
+  }
 }
 
 // ============================================================
