@@ -25,7 +25,7 @@
       <a href="index.html#experience">work</a>
       <a href="index.html#resume">resume</a>
       <a href="notes.html" class="active">notes</a>
-      <a href="publications.html">writing</a>
+      <a href="publications.html">publications</a>
       <a href="https://sites.google.com/view/karoljiaportfolio/profile"
          target="_blank" rel="noopener noreferrer">cv ↗</a>
       <button id="themeToggle" class="iconbtn" type="button"
@@ -290,11 +290,17 @@ function renderNoteCard(note) {
     : "";
 
   const imageMarkup = Array.isArray(note.images) && note.images.length
-    ? `<div class="note-media">${note.images.map(src => `<img src="${escapeAttribute(src)}" alt="Field note image">`).join("")}</div>`
+    ? `<div class="note-media">${note.images.map(img => {
+        const src = typeof img === "string" ? img : (img && img.url) || "";
+        return `<img src="${escapeAttribute(src)}" alt="Field note image">`;
+      }).join("")}</div>`
     : "";
 
   const videoMarkup = Array.isArray(note.videos) && note.videos.length
-    ? `<div class="note-media">${note.videos.map(src => `<video src="${escapeAttribute(src)}" controls></video>`).join("")}</div>`
+    ? `<div class="note-media">${note.videos.map(vid => {
+        const src = typeof vid === "string" ? vid : (vid && vid.url) || "";
+        return `<video src="${escapeAttribute(src)}" controls></video>`;
+      }).join("")}</div>`
     : "";
 
   const meta = `<div class="note-meta">${escapeHtml(formatNoteTime(note.timestamp))}</div>`;
