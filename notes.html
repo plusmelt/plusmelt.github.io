@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Field Notes — Karol Jia</title>
+  <title>Notes — Karol Jia</title>
 
   <link rel="icon" href="favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="global.css">
   <link rel="stylesheet" href="layout.css">
@@ -19,7 +19,7 @@
 
 <header>
   <div class="container">
-    <div class="brand">Karol Jia / 佳嵘</div>
+    <div class="brand"><a href="index.html">Karol Jia / 佳嵘</a></div>
     <nav>
       <a href="index.html#about">about</a>
       <a href="index.html#experience">work</a>
@@ -37,29 +37,29 @@
 <main>
 
   <!-- ============ NOTES HERO ============ -->
-  <section class="section field-notes-hero">
+  <section class="notes-hero">
     <div class="container">
-      <div class="field-notes-topline">
-        <span class="label">05 — Notes</span>
-        <span class="field-notes-update" id="lastUpdate">last update loading...</span>
+      <div class="notes-hero-top">
+        <span class="notes-hero-label">05 — Notes</span>
+        <span class="notes-hero-update" id="lastUpdate">last update —</span>
       </div>
 
-      <h1 class="field-notes-title">
-        From <span class="slash">/</span> the Field
+      <h1 class="notes-hero-title">
+        From <span class="slash">/</span> the field
       </h1>
 
-      <p class="field-notes-lead">
-        Small fragments from reading, research, daily life, and the unfinished parts of becoming.
+      <p class="notes-hero-lead">
+        Small fragments from reading, research, and the unfinished parts of becoming.
       </p>
     </div>
   </section>
 
-  <!-- ============ PERSONAL STORY ============ -->
-  <section class="section story-section">
+  <!-- ============ HOW I GOT HERE ============ -->
+  <section class="story-section">
     <div class="container">
-      <div class="section-head compact">
-        <span class="label">Before the feed</span>
-        <h2>How I got here</h2>
+      <div class="story-head">
+        <span class="story-label">Before the feed</span>
+        <h2 class="story-title">How <span class="slash">/</span> I got here</h2>
       </div>
 
       <div class="story-grid">
@@ -67,7 +67,8 @@
           <div class="story-kicker">origin</div>
           <h3>Learning first felt like a private shelter.</h3>
           <p>
-            I grew up treating books, languages, and small observations as ways to make sense of the world before I had the vocabulary for it.
+            I grew up treating books, languages, and small observations as
+            ways to make sense of the world before I had the vocabulary for it.
           </p>
         </article>
 
@@ -75,7 +76,8 @@
           <div class="story-kicker">shift</div>
           <h3>Business taught me systems; education taught me stakes.</h3>
           <p>
-            Moving between marketing, history, and education made me more attentive to how institutions shape what people are allowed to imagine.
+            Moving between marketing, history, and education made me more
+            attentive to how institutions shape what people are allowed to imagine.
           </p>
         </article>
 
@@ -83,39 +85,58 @@
           <div class="story-kicker">now</div>
           <h3>I keep returning to questions of access.</h3>
           <p>
-            Who gets support, who gets judged, who gets translated poorly by systems, and who has to work hardest to be understood.
+            Who gets support, who gets judged, who gets translated poorly by
+            systems, and who has to work hardest to be understood.
           </p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ LIVE NOTES ============ -->
-  <section class="section notes-feed-section">
+  <!-- ============ LIVE NOTES FEED ============ -->
+  <section class="feed-section">
     <div class="container">
-      <div class="section-head compact">
-        <span class="label">Live notes</span>
-        <h2>Fragments <span class="slash">/</span> from the feed</h2>
+
+      <div class="feed-head">
+        <span class="feed-label">Live feed</span>
+        <h2 class="feed-title">Fragments <span class="slash">/</span> from the desk</h2>
       </div>
 
-      <div class="tag-filter" id="tagFilter">
-        <button class="tag-filter-btn active" data-tag="all">all</button>
-        <button class="tag-filter-btn" data-tag="research">#research</button>
-        <button class="tag-filter-btn" data-tag="life">#life</button>
-        <button class="tag-filter-btn" data-tag="travel">#travel</button>
-        <button class="tag-filter-btn" data-tag="reading">#reading</button>
-        <button class="tag-filter-btn" data-tag="quote">#quote</button>
+      <div class="feed-controls">
+        <div class="mode-toggle" id="modeToggle" role="tablist">
+          <button class="mode-btn active" data-mode="cards" role="tab" aria-selected="true">cards</button>
+          <button class="mode-btn" data-mode="timeline" role="tab" aria-selected="false">timeline</button>
+        </div>
+        <div class="tag-filter" id="tagFilter">
+          <button class="tag-btn active" data-tag="all">all</button>
+          <button class="tag-btn" data-tag="research">#research</button>
+          <button class="tag-btn" data-tag="life">#life</button>
+          <button class="tag-btn" data-tag="travel">#travel</button>
+          <button class="tag-btn" data-tag="reading">#reading</button>
+          <button class="tag-btn" data-tag="quote">#quote</button>
+        </div>
       </div>
 
-      <div id="notes-list" class="notes-list">
-        <p class="muted">Loading notes...</p>
+      <div id="cardsView" class="cards-view">
+        <div class="cards-counter" id="cardsCounter">— / —</div>
+
+        <div class="card-stack" id="cardStack">
+          <p class="muted feed-loading">loading notes…</p>
+        </div>
+
+        <div class="card-nav">
+          <button class="card-arrow" id="cardPrev" aria-label="previous note">←</button>
+          <div class="card-dots" id="cardDots"></div>
+          <button class="card-arrow" id="cardNext" aria-label="next note">→</button>
+        </div>
+
+        <p class="card-hint">drag a card or use the arrows</p>
       </div>
 
-      <div class="notes-pagination">
-        <button class="btn" id="prevNotes" type="button">newer notes</button>
-        <span class="mono muted" id="pageInfo">page 1</span>
-        <button class="btn" id="nextNotes" type="button">older notes</button>
+      <div id="timelineView" class="timeline-view" hidden>
+        <p class="muted feed-loading">loading notes…</p>
       </div>
+
     </div>
   </section>
 
@@ -131,311 +152,328 @@
 <script>
 const state = {
   notes: [],
-  filteredNotes: [],
-  currentTag: "all",
-  page: 1,
-  perPage: 10
+  filtered: [],
+  currentTag: 'all',
+  mode: 'cards',
+  index: 0
 };
 
-async function loadNotesPage() {
-  const notesList = document.getElementById("notes-list");
+const els = {
+  lastUpdate: document.getElementById('lastUpdate'),
+  modeToggle: document.getElementById('modeToggle'),
+  tagFilter:  document.getElementById('tagFilter'),
+  cardsView:  document.getElementById('cardsView'),
+  timelineView: document.getElementById('timelineView'),
+  cardStack:  document.getElementById('cardStack'),
+  cardCounter: document.getElementById('cardsCounter'),
+  cardDots:   document.getElementById('cardDots'),
+  cardPrev:   document.getElementById('cardPrev'),
+  cardNext:   document.getElementById('cardNext')
+};
 
+async function load(){
   try {
-    const response = await fetch("https://plusmelt.org/api/notes", {
-      cache: "no-store"
-    });
-
-    const data = await response.json();
+    const res = await fetch('/api/notes', { cache: 'no-store' });
+    const data = await res.json();
     state.notes = Array.isArray(data.notes) ? data.notes : [];
-    state.filteredNotes = state.notes;
-
+    state.filtered = state.notes;
     updateLastUpdate();
     updateTagCounts();
-    renderNotes();
-  } catch (error) {
-    notesList.innerHTML = '<p class="muted">Notes could not be loaded.</p>';
-    document.getElementById("lastUpdate").textContent = "last update unavailable";
+    render();
+  } catch (e) {
+    els.cardStack.innerHTML = '<p class="muted">Notes could not be loaded.</p>';
+    els.timelineView.innerHTML = '<p class="muted">Notes could not be loaded.</p>';
+    els.lastUpdate.textContent = 'last update unavailable';
   }
 }
 
-function updateLastUpdate() {
-  const target = document.getElementById("lastUpdate");
-
+function updateLastUpdate(){
   if (!state.notes.length) {
-    target.textContent = "last update unavailable";
+    els.lastUpdate.textContent = 'last update —';
     return;
   }
-
   const latest = new Date(state.notes[0].timestamp);
-  target.textContent = `last update ${relativeTime(latest)}`;
+  els.lastUpdate.textContent = 'last update ' + relTime(latest);
 }
 
-function updateTagCounts() {
-  const buttons = document.querySelectorAll(".tag-filter-btn");
-
-  buttons.forEach(button => {
-    const tag = button.dataset.tag;
-
-    if (tag === "all") {
-      button.textContent = `all · ${state.notes.length}`;
+function updateTagCounts(){
+  document.querySelectorAll('.tag-btn').forEach(btn => {
+    const tag = btn.dataset.tag;
+    if (tag === 'all') {
+      btn.textContent = 'all · ' + state.notes.length;
       return;
     }
-
-    const count = state.notes.filter(note => {
-      return Array.isArray(note.tags) && note.tags.includes(tag);
-    }).length;
-
-    button.textContent = `#${tag} · ${count}`;
+    const n = state.notes.filter(x => Array.isArray(x.tags) && x.tags.includes(tag)).length;
+    btn.textContent = '#' + tag + ' · ' + n;
   });
 }
 
-function relativeTime(date) {
-  const seconds = Math.max(1, Math.floor((Date.now() - date.getTime()) / 1000));
-
-  if (seconds < 60) {
-    return `${seconds}s ago`;
-  }
-
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) {
-    return `${minutes}m ago`;
-  }
-
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) {
-    return `${hours}h ago`;
-  }
-
-  const days = Math.floor(hours / 24);
-  if (days < 30) {
-    return `${days}d ago`;
-  }
-
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric"
-  });
+function relTime(date){
+  const s = Math.max(1, Math.floor((Date.now() - date.getTime())/1000));
+  if (s < 60) return s + 's ago';
+  const m = Math.floor(s/60);
+  if (m < 60) return m + 'm ago';
+  const h = Math.floor(m/60);
+  if (h < 24) return h + 'h ago';
+  const d = Math.floor(h/24);
+  if (d < 30) return d + 'd ago';
+  return date.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
 }
 
-function formatNoteTime(timestamp) {
-  const date = new Date(timestamp);
+function noteTime(ts){
+  const d = new Date(ts);
   const now = new Date();
-
-  const sameDay =
-    date.getFullYear() === now.getFullYear() &&
-    date.getMonth() === now.getMonth() &&
-    date.getDate() === now.getDate();
-
-  const yesterday = new Date(now);
-  yesterday.setDate(now.getDate() - 1);
-
-  const isYesterday =
-    date.getFullYear() === yesterday.getFullYear() &&
-    date.getMonth() === yesterday.getMonth() &&
-    date.getDate() === yesterday.getDate();
-
-  const time = date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit"
-  });
-
-  if (sameDay) {
-    return `${relativeTime(date)}`;
-  }
-
-  if (isYesterday) {
-    return `Yesterday · ${time}`;
-  }
-
-  return date.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric"
-  });
+  const sameDay = d.getFullYear()===now.getFullYear() && d.getMonth()===now.getMonth() && d.getDate()===now.getDate();
+  const y = new Date(now); y.setDate(now.getDate()-1);
+  const isY = d.getFullYear()===y.getFullYear() && d.getMonth()===y.getMonth() && d.getDate()===y.getDate();
+  const time = d.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' });
+  if (sameDay) return relTime(d);
+  if (isY) return 'yesterday · ' + time;
+  return d.toLocaleDateString('en-US', { month:'short', day:'numeric' }) + ' · ' + time;
 }
 
-function renderNotes() {
-  const notesList = document.getElementById("notes-list");
-  const pageInfo = document.getElementById("pageInfo");
-  const prev = document.getElementById("prevNotes");
-  const next = document.getElementById("nextNotes");
-
-  if (!state.filteredNotes.length) {
-    notesList.innerHTML = '<p class="muted">No notes yet.</p>';
-    pageInfo.textContent = "page 0 of 0";
-    prev.disabled = true;
-    next.disabled = true;
-    return;
-  }
-
-  const totalPages = Math.ceil(state.filteredNotes.length / state.perPage);
-  state.page = Math.min(state.page, totalPages);
-
-  const start = (state.page - 1) * state.perPage;
-  const visibleNotes = state.filteredNotes.slice(start, start + state.perPage);
-
-  notesList.innerHTML = visibleNotes.map(note => renderNoteCard(note)).join("");
-
-  pageInfo.textContent = `page ${state.page} of ${totalPages}`;
-  prev.disabled = state.page <= 1;
-  next.disabled = state.page >= totalPages;
-}
-
-function renderNoteCard(note) {
-  const tags = Array.isArray(note.tags) ? note.tags : [];
-  const isQuote = tags.includes("quote");
-
-  const tagMarkup = tags.length
-    ? `<div class="note-tags">${tags.map(tag => `<span>#${escapeHtml(tag)}</span>`).join("")}</div>`
-    : "";
-
-  const imageMarkup = Array.isArray(note.images) && note.images.length
-    ? `<div class="note-media">${note.images.map(img => {
-        const src = typeof img === "string" ? img : (img && img.url) || "";
-        return `<img src="${escapeAttribute(src)}" alt="Field note image">`;
-      }).join("")}</div>`
-    : "";
-
-  const videoMarkup = Array.isArray(note.videos) && note.videos.length
-    ? `<div class="note-media">${note.videos.map(vid => {
-        const src = typeof vid === "string" ? vid : (vid && vid.url) || "";
-        return `<video src="${escapeAttribute(src)}" controls></video>`;
-      }).join("")}</div>`
-    : "";
-
-  const meta = `<div class="note-meta">${escapeHtml(formatNoteTime(note.timestamp))}</div>`;
-
-  if (isQuote) {
-    const quoteParts = parseQuote(note.content);
-
-    return `
-      <article class="note-card quote-card">
-        ${meta}
-        <blockquote>${escapeHtml(quoteParts.quote)}</blockquote>
-        ${quoteParts.source ? `<div class="quote-source">${escapeHtml(quoteParts.source)}</div>` : ""}
-        ${imageMarkup}
-        ${videoMarkup}
-        ${tagMarkup}
-      </article>
-    `;
-  }
-
-  return `
-    <article class="note-card">
-      ${meta}
-      <p>${escapeHtml(note.content)}</p>
-      ${imageMarkup}
-      ${videoMarkup}
-      ${tagMarkup}
-    </article>
-  `;
-}
-
-function parseQuote(content) {
-  const lines = String(content || "")
-    .split("\n")
-    .map(line => line.trim())
-    .filter(Boolean);
-
+function parseQuote(text){
+  const lines = String(text||'').split('\n').map(l => l.trim()).filter(Boolean);
   if (lines.length >= 2) {
-    const last = lines[lines.length - 1];
-
+    const last = lines[lines.length-1];
     if (/^[—–-]\s+/.test(last)) {
       return {
-        quote: lines.slice(0, -1).join("\n"),
-        source: last.replace(/^[—–-]\s+/, "")
+        quote: lines.slice(0, -1).join('\n'),
+        source: last.replace(/^[—–-]\s+/, '')
       };
     }
   }
-
-  return {
-    quote: content,
-    source: ""
-  };
+  return { quote: text, source: '' };
 }
 
-function setupFilters() {
-  const filter = document.getElementById("tagFilter");
+function esc(s){
+  return String(s||'')
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'", '&#039;');
+}
 
-  filter.addEventListener("click", event => {
-    const button = event.target.closest("button");
+function escAttr(s){
+  return String(s||'')
+    .replaceAll('&','&amp;')
+    .replaceAll('"','&quot;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;');
+}
 
-    if (!button) {
-      return;
-    }
+function imgUrl(img){
+  return typeof img === 'string' ? img : (img && img.url) || '';
+}
 
-    const tag = button.dataset.tag;
-    state.currentTag = tag;
-    state.page = 1;
+function tagChips(tags){
+  if (!Array.isArray(tags) || !tags.length) return '';
+  return '<div class="note-tags">' +
+    tags.map(t => '<span>#' + esc(t) + '</span>').join('') +
+    '</div>';
+}
 
-    document.querySelectorAll(".tag-filter-btn").forEach(item => {
-      item.classList.toggle("active", item.dataset.tag === tag);
-    });
+function imageBlock(images){
+  if (!Array.isArray(images) || !images.length) return '';
+  return '<div class="note-media">' +
+    images.map(i => '<img src="' + escAttr(imgUrl(i)) + '" alt="">').join('') +
+    '</div>';
+}
 
-    if (tag === "all") {
-      state.filteredNotes = state.notes;
+function videoBlock(videos){
+  if (!Array.isArray(videos) || !videos.length) return '';
+  return '<div class="note-media">' +
+    videos.map(v => '<video src="' + escAttr(imgUrl(v)) + '" controls></video>').join('') +
+    '</div>';
+}
+
+function renderCard(note, includeMedia = true){
+  const tags = Array.isArray(note.tags) ? note.tags : [];
+  const isQuote = tags.includes('quote');
+  const meta = '<div class="note-meta">' + esc(noteTime(note.timestamp)) + '</div>';
+  const chips = tagChips(tags);
+
+  if (isQuote) {
+    const q = parseQuote(note.content);
+    return '<article class="note-card quote">' +
+      '<div class="note-head">' + meta + chips + '</div>' +
+      '<div class="note-body">' +
+        '<blockquote>' + esc(q.quote) + '</blockquote>' +
+        (q.source ? '<div class="quote-src">— ' + esc(q.source) + '</div>' : '') +
+        (includeMedia ? imageBlock(note.images) + videoBlock(note.videos) : '') +
+      '</div>' +
+    '</article>';
+  }
+
+  return '<article class="note-card">' +
+    '<div class="note-head">' + meta + chips + '</div>' +
+    '<div class="note-body">' +
+      '<p>' + esc(note.content) + '</p>' +
+      (includeMedia ? imageBlock(note.images) + videoBlock(note.videos) : '') +
+    '</div>' +
+  '</article>';
+}
+
+function renderTimelineItem(note){
+  const tags = Array.isArray(note.tags) ? note.tags : [];
+  const isQuote = tags.includes('quote');
+  const tagText = tags.length ? ' · ' + tags.map(t => '#'+t).join(' ') : '';
+
+  if (isQuote) {
+    const q = parseQuote(note.content);
+    return '<article class="tl-item tl-quote">' +
+      '<div class="tl-meta">' + esc(noteTime(note.timestamp)) + tagText + '</div>' +
+      '<blockquote>' + esc(q.quote) + (q.source ? ' <span class="tl-src">— ' + esc(q.source) + '</span>' : '') + '</blockquote>' +
+    '</article>';
+  }
+
+  return '<article class="tl-item">' +
+    '<div class="tl-meta">' + esc(noteTime(note.timestamp)) + tagText + '</div>' +
+    '<p>' + esc(note.content) + '</p>' +
+    imageBlock(note.images) +
+    videoBlock(note.videos) +
+  '</article>';
+}
+
+function render(){
+  if (state.mode === 'cards') renderCards();
+  else renderTimeline();
+}
+
+function renderCards(){
+  const list = state.filtered;
+  if (!list.length) {
+    els.cardStack.innerHTML = '<p class="muted feed-empty">no notes for this tag yet.</p>';
+    els.cardCounter.textContent = '0 / 0';
+    els.cardDots.innerHTML = '';
+    els.cardPrev.disabled = true;
+    els.cardNext.disabled = true;
+    return;
+  }
+  state.index = Math.min(state.index, list.length - 1);
+
+  const shown = list.slice(state.index, state.index + 3);
+  let html = '';
+  shown.forEach((n, i) => {
+    const cls = i === 0 ? 'card-layer top' : i === 1 ? 'card-layer mid' : 'card-layer back';
+    html += '<div class="' + cls + '" data-i="' + i + '">' + renderCard(n) + '</div>';
+  });
+
+  els.cardStack.innerHTML = html;
+
+  const top = els.cardStack.querySelector('.card-layer.top');
+  if (top) attachDrag(top);
+
+  els.cardCounter.textContent = (state.index + 1) + ' / ' + list.length;
+
+  const dotCount = Math.min(list.length, 10);
+  const dots = [];
+  for (let i = 0; i < dotCount; i++) {
+    const active = i === Math.floor((state.index / Math.max(1, list.length-1)) * (dotCount-1));
+    dots.push('<span class="card-dot' + (active ? ' active' : '') + '"></span>');
+  }
+  els.cardDots.innerHTML = dots.join('');
+
+  els.cardPrev.disabled = state.index <= 0;
+  els.cardNext.disabled = state.index >= list.length - 1;
+}
+
+function renderTimeline(){
+  if (!state.filtered.length) {
+    els.timelineView.innerHTML = '<p class="muted feed-empty">no notes for this tag yet.</p>';
+    return;
+  }
+  els.timelineView.innerHTML = state.filtered.map(renderTimelineItem).join('');
+}
+
+function goPrev(){ if (state.index > 0){ state.index--; renderCards(); } }
+function goNext(){ if (state.index < state.filtered.length - 1){ state.index++; renderCards(); } }
+
+function attachDrag(card){
+  let startX = 0, dx = 0, dragging = false;
+
+  function down(e){
+    dragging = true;
+    startX = (e.touches ? e.touches[0].clientX : e.clientX);
+    card.style.transition = 'none';
+  }
+  function move(e){
+    if (!dragging) return;
+    const x = (e.touches ? e.touches[0].clientX : e.clientX);
+    dx = x - startX;
+    card.style.transform = 'translateX(' + dx + 'px) rotate(' + (dx * 0.04) + 'deg)';
+  }
+  function up(){
+    if (!dragging) return;
+    dragging = false;
+    card.style.transition = 'transform 0.3s ease';
+    if (dx < -80) {
+      card.style.transform = 'translateX(-600px) rotate(-25deg)';
+      setTimeout(goNext, 220);
+    } else if (dx > 80 && state.index > 0) {
+      card.style.transform = 'translateX(600px) rotate(25deg)';
+      setTimeout(goPrev, 220);
     } else {
-      state.filteredNotes = state.notes.filter(note => {
-        return Array.isArray(note.tags) && note.tags.includes(tag);
-      });
+      card.style.transform = '';
     }
+    dx = 0;
+  }
 
-    renderNotes();
+  card.addEventListener('mousedown', down);
+  window.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', up);
+  card.addEventListener('touchstart', down, { passive: true });
+  card.addEventListener('touchmove', move, { passive: true });
+  card.addEventListener('touchend', up);
+
+  card.addEventListener('click', () => {
+    if (Math.abs(dx) < 4) goNext();
   });
 }
 
-function setupPagination() {
-  document.getElementById("prevNotes").addEventListener("click", () => {
-    if (state.page > 1) {
-      state.page -= 1;
-      renderNotes();
-      window.scrollTo({
-        top: document.querySelector(".notes-feed-section").offsetTop,
-        behavior: "smooth"
-      });
-    }
+document.addEventListener('keydown', (e) => {
+  if (state.mode !== 'cards') return;
+  if (e.key === 'ArrowLeft')  goPrev();
+  if (e.key === 'ArrowRight') goNext();
+});
+
+els.cardPrev.addEventListener('click', goPrev);
+els.cardNext.addEventListener('click', goNext);
+
+els.modeToggle.addEventListener('click', (e) => {
+  const btn = e.target.closest('.mode-btn');
+  if (!btn) return;
+  const mode = btn.dataset.mode;
+  state.mode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => {
+    const isOn = b.dataset.mode === mode;
+    b.classList.toggle('active', isOn);
+    b.setAttribute('aria-selected', isOn ? 'true' : 'false');
   });
+  els.cardsView.hidden = (mode !== 'cards');
+  els.timelineView.hidden = (mode !== 'timeline');
+  render();
+});
 
-  document.getElementById("nextNotes").addEventListener("click", () => {
-    const totalPages = Math.ceil(state.filteredNotes.length / state.perPage);
-
-    if (state.page < totalPages) {
-      state.page += 1;
-      renderNotes();
-      window.scrollTo({
-        top: document.querySelector(".notes-feed-section").offsetTop,
-        behavior: "smooth"
-      });
-    }
+els.tagFilter.addEventListener('click', (e) => {
+  const btn = e.target.closest('.tag-btn');
+  if (!btn) return;
+  const tag = btn.dataset.tag;
+  state.currentTag = tag;
+  state.index = 0;
+  document.querySelectorAll('.tag-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tag === tag);
   });
-}
+  state.filtered = (tag === 'all')
+    ? state.notes
+    : state.notes.filter(n => Array.isArray(n.tags) && n.tags.includes(tag));
+  render();
+});
 
-function escapeHtml(text) {
-  return String(text || "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
+document.getElementById('year').textContent = new Date().getFullYear();
 
-function escapeAttribute(text) {
-  return String(text || "")
-    .replaceAll("&", "&amp;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;");
-}
-
-const yearTarget = document.getElementById("year");
-
-if (yearTarget) {
-  yearTarget.textContent = new Date().getFullYear();
-}
-
-setupFilters();
-setupPagination();
-loadNotesPage();
+load();
 </script>
 
 <script src="app.js"></script>
