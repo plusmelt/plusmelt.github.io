@@ -231,3 +231,82 @@ if (streamRoot){
   }, { threshold: 0.15 });
   io.observe(streamRoot);
 }
+
+// ============================================================
+// LATEST NOTE (homepage teaser) — fetches /api/notes and shows the most recent one
+// ============================================================
+const latestCard = document.getElementById('latestNoteCard');
+const latestMeta = document.getElementById('latestNoteMeta');
+
+if (latestCard) {
+  fetch('/api/notes', { cache: 'no-store' })
+    .then(r => r.json())
+    .then(data => {
+      const notes = Array.isArray(data.notes) ? data.notes : [];
+      if (!notes.length) {
+        latestCard.innerHTML = '<p class="muted">no notes yet — check back soon.</p>';
+        if (latestMeta) latestMeta.textContent = 'latest note · —';
+        return;
+      }
+      const n = notes[0];
+      renderLatestNote(n);
+    })
+    .catch(() => {
+      latestCard.innerHTML = '<p class="muted">notes unavailable right now.</p>';
+      if (latestMeta) latestMeta.textContent = 'latest note · —';
+    });
+}
+
+function renderLatestNote(n){
+  const tags = Array.isArray(n.tags) ? n.tags : [];
+  const isQuote = tags.includes('quote');
+
+  if (latestMeta) {
+    latestMeta.textContent = 'latest note · ' + latestRelTime(new Date(n.timestamp));
+  }
+
+  const chipsHtml = tags.length
+    ? '<div class="latest-note-tags">' + tags.map(t => '<span>#' + escLN(t) + '</span>').join('') + '</div>'
+    : '';
+
+  if (isQuote) {
+    const q = parseQuoteLN(n.content);
+    latestCard.innerHTML =
+      '<blockquote class="latest-note-quote">' + escLN(q.quote) + '</blockquote>' +
+      (q.source ? '<div class="latest-note-src">— ' + escLN(q.source) + '</div>' : '') +
+      chipsHtml;
+  } else {
+    latestCard.innerHTML =
+      '<p class="latest-note-body">' + escLN(n.content) + '</p>' +
+      chipsHtml;
+  }
+}
+
+function latestRelTime(date){
+  const s = Math.max(1, Math.floor((Date.now() - date.getTime())/1000));
+  if (s < 60) return s + 's ago';
+  const m = Math.floor(s/60);
+  if (m < 60) return m + 'm ago';
+  const h = Math.floor(m/60);
+  if (h < 24) return h + 'h ago';
+  const d = Math.floor(h/24);
+  if (d < 30) return d + 'd ago';
+  return date.toLocaleDateString('en-US', { month:'short', day:'numeric' });
+}
+
+function escLN(s){
+  return String(s||'')
+    .replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
+    .replaceAll('"','&quot;').replaceAll("'", '&#039;');
+}
+
+function parseQuoteLN(text){
+  const lines = String(text||'').split('\n').map(l => l.trim()).filter(Boolean);
+  if (lines.length >= 2) {
+    const last = lines[lines.length-1];
+    if (/^[—–-]\s+/.test(last)) {
+      return { quote: lines.slice(0, -1).join('\n'), source: last.replace(/^[—–-]\s+/, '') };
+    }
+  }
+  return { quote: text, source: '' };
+}
