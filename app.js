@@ -41,6 +41,30 @@ function syncThemeIcon(){
   themeBtn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾';
 }
 
+// ---------- language toggle (EN / 中) ----------
+// Swaps the text of any element carrying data-en / data-zh.
+// Same mechanism as the theme toggle: preference stored in localStorage,
+// applied on load, no page reload. Elements without a data-zh just stay put.
+const langBtn = document.getElementById('langToggle');
+let lang = localStorage.getItem('lang') === 'zh' ? 'zh' : 'en';
+applyLang();
+
+langBtn?.addEventListener('click', () => {
+  lang = lang === 'en' ? 'zh' : 'en';
+  localStorage.setItem('lang', lang);
+  applyLang();
+});
+
+function applyLang(){
+  document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-Hans' : 'en');
+  body.setAttribute('data-lang', lang);
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute(lang === 'zh' ? 'data-zh' : 'data-en');
+    if (val != null) el.textContent = val;
+  });
+  if (langBtn) langBtn.textContent = lang === 'en' ? '中' : 'EN';
+}
+
 // ============================================================
 // CAT CURSOR — only inside #hero
 // ============================================================
