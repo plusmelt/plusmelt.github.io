@@ -361,6 +361,51 @@ header nav a.active::after {
   transition: filter 0.4s ease;
 }
 .about-photo:hover img { filter: grayscale(0); }
+
+/* --- flip photo: click the portrait to turn it to a second image --- */
+.about-photo.flip { perspective: 1200px; }
+.about-photo.flip .flip-toggle {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0; margin: 0; z-index: -1;
+}
+.about-photo.flip .flip-inner {
+  display: block;
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  cursor: pointer;
+}
+.about-photo.flip .flip-toggle:checked + .flip-inner { transform: rotateY(180deg); }
+.about-photo.flip .flip-toggle:focus-visible + .flip-inner {
+  outline: 2px solid var(--hl);
+  outline-offset: 4px;
+}
+.about-photo.flip .flip-face {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  background: var(--bg-elev);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.about-photo.flip .flip-back { transform: rotateY(180deg); }
+.about-photo.flip .flip-hint {
+  position: absolute; right: 0.6rem; bottom: 0.6rem;
+  z-index: 2;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--hl);
+  color: var(--hl-ink);
+  padding: 4px 7px;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-photo.flip .flip-inner { transition: none; }
+}
+
 .about-text {
   font-size: clamp(1.3rem, 2vw, 1.8rem);
   line-height: 1.35;
