@@ -81,6 +81,15 @@ a:hover { opacity: 0.6; }
   margin: 0 auto;
   padding: 0 2rem;
 }
+
+/* homepage: anchor the content column to the left of the page
+   instead of centering it. On wide screens the whole layout
+   (header + hero + sections) hugs the left gutter and the extra
+   space pools on the right. Below 1400px this is a no-op. */
+body.left-anchor .container {
+  margin-left: 0;
+  margin-right: auto;
+}
 .row   { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
 .stack { display: flex; flex-direction: column; gap: 1.25rem; }
 
